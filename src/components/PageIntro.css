@@ -1,0 +1,127 @@
+.page-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.page-intro.intro-exit {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.intro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  padding: 0 40px;
+}
+
+/* SVG hello */
+.hello-svg {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  overflow: visible;
+}
+
+/* Each path draws itself */
+.hello-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  fill: none;
+}
+
+/* Staggered drawing animation */
+.hello-svg .path-h  { animation: draw 0.55s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards; }
+.hello-svg .path-e  { animation: draw 0.45s cubic-bezier(0.4, 0, 0.2, 1) 0.55s forwards; }
+.hello-svg .path-l1 { animation: draw 0.35s cubic-bezier(0.4, 0, 0.2, 1) 0.95s forwards; }
+.hello-svg .path-l2 { animation: draw 0.35s cubic-bezier(0.4, 0, 0.2, 1) 1.25s forwards; }
+.hello-svg .path-o  { animation: draw 0.55s cubic-bezier(0.4, 0, 0.2, 1) 1.55s forwards; }
+.hello-svg .path-dot{ animation: draw 0.2s  cubic-bezier(0.4, 0, 0.2, 1) 2.05s forwards; }
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Color phase — switch gradient */
+.hello-svg.coloring .hello-path,
+.hello-svg.exiting .hello-path {
+  stroke: url(#grad-color);
+  animation: none;
+  stroke-dashoffset: 0;
+}
+
+/* Name reveal */
+.intro-name {
+  font-size: clamp(18px, 3vw, 26px);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  color: var(--text, #1a1a1a);
+  letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.intro-name.name-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Cursor */
+.intro-cursor {
+  position: fixed;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  z-index: 10000;
+  transition: opacity 0.4s ease;
+}
+.intro-cursor.cursor-done {
+  opacity: 0;
+}
+.intro-cursor-label {
+  background: #a8c8ff;
+  color: #1a1a2e;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 0 4px 4px 4px;
+  margin-top: 16px;
+  white-space: nowrap;
+}
+
+/* Cursor follows the drawing path */
+.intro-cursor.cursor-active {
+  animation: cursorTrack 2.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes cursorTrack {
+  0%   { left: 8%;  top: 45%; }
+  18%  { left: 18%; top: 35%; }
+  32%  { left: 33%; top: 55%; }
+  50%  { left: 43%; top: 35%; }
+  65%  { left: 52%; top: 35%; }
+  80%  { left: 63%; top: 45%; }
+  95%  { left: 68%; top: 72%; }
+  100% { left: 70%; top: 72%; }
+}
+
+.page-intro.intro-exit {
+  opacity: 0;
+  transform: scale(1.03);
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}

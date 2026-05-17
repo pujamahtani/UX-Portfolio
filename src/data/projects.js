@@ -1,0 +1,861 @@
+// Media base for videos: empty in local dev (served from /public),
+// set VITE_MEDIA_BASE to your Cloudinary base URL on Vercel for production.
+// Example: VITE_MEDIA_BASE=https://res.cloudinary.com/your-cloud/video/upload
+const MEDIA_BASE = import.meta.env.VITE_MEDIA_BASE || '';
+const mp4 = (name) => `${MEDIA_BASE}/${name}`;
+
+export const projectsData = [
+  {
+    id: 'clinicaliq',
+    label: 'Showcase 1',
+    title: 'AI-Powered Anemia Management That Cuts Transfusion Risk by 40%',
+    accentPhrase: 'AI-Powered Anemia Management',
+    handwriting: '40%',
+    shortTitle: 'BloodHealth Copilot',
+    description: 'AI clinical decision support embedded inside Epic for care coordinators managing high-risk anemia patients.',
+    color: '#1E6C50',
+    accent: '#1E6C50',
+    accentAlt: '#174F62',
+    accentWarm: '#1E6C50',
+    deep: '#174F62',
+    gradient: 'linear-gradient(180deg, rgba(30,108,80,0.06) 0%, rgba(255,255,255,0) 100%)',
+    gradientSoft: 'linear-gradient(135deg, rgba(30,108,80,0.06) 0%, rgba(23,79,98,0.05) 100%)',
+    demoVideo: mp4('case-study1.mp4'),
+    heroImage: '/clinicaliq-logo.png',
+    prototypeUrl: 'https://claude.ai/public/artifacts/d463c37a-d5e4-4109-8660-c3be7366b333',
+    tags: ['Strategy', 'Interactive Prototype', 'AI Workflow'],
+    meta: {
+      role: 'Solo Product Designer',
+      team: '2 Product leaders · 2 SMEs · 1 Designer · 4 Engineers',
+      timeline: '~1 year',
+      tools: 'Claude AI & Code · Figma · FigJam · Bolt',
+      platform: 'Epic Hyperspace',
+    },
+    sections: [
+      {
+        type: 'role',
+        kicker: 'My Role',
+        title: 'AI Product Designer',
+        intro: 'Sole designer on an AI-first clinical product, owning everything from the AI pipeline architecture to high-fidelity prototyping inside Epic, working directly with clinicians, engineers, and product leaders.',
+        items: [
+          {
+            number: '01',
+            title: 'Built the AI design-to-code workflow',
+            body: 'A reusable pipeline from product vision to production-ready front-end, fast enough to test with clinicians.',
+          },
+          {
+            number: '02',
+            title: 'Drove cross-team alignment',
+            body: 'Design bridge between product, SMEs, and engineering on every clinical and architectural call.',
+          },
+          {
+            number: '03',
+            title: 'Owned visual, component & AI specs',
+            body: 'Visual + component design, plus the AI markdown files the team re-runs on every new module.',
+          },
+        ],
+      },
+      {
+        type: 'overview',
+        kicker: 'The Problem',
+        question: 'How do we flag and treat anemia inside Epic before it turns into a transfusion?',
+        content:
+          "Anemia is identifiable from routine labs already in the EMR, yet it's chronically under-managed. Care coordinators have no in-workflow tool to act on the data. By the time it gets flagged manually, the treatment window is already closing.",
+        outcome:
+          'BloodHealth Copilot embeds an AI decision layer inside Epic, monitoring FHIR data in real time, surfacing the highest-risk patients, and generating evidence-backed care plans in one click.',
+        metrics: [
+          { value: '40%', label: '↓ unnecessary transfusions', tone: 'warm' },
+          { value: '$3.5K+', label: 'avoided per transfusion', tone: 'warm' },
+          { value: '<2 min', label: 'alert → care plan', tone: 'teal' },
+        ],
+        flowDiagram: {
+          left: {
+            label: 'Clinical Data',
+            items: ['EHR Data', 'Lab Results', 'Patient Records', 'Clinical History'],
+          },
+          center: {
+            label: 'Clinician-Built AI',
+            sub: 'Agentic Intelligence',
+          },
+          right: {
+            label: 'Actions',
+            items: ['Care gap alerts', 'Treatment protocols', 'Patient outreach', 'Auto-scheduling'],
+          },
+          outcome: {
+            label: 'Care Gaps Closed',
+            sub: 'Better Outcomes',
+          },
+        },
+      },
+      {
+        type: 'coordinatorflow',
+        kicker: 'User Flow',
+        title: 'Every step a care coordinator takes inside Epic, from login to a deployed care plan.',
+        pre: [
+          { label: 'Epic Hyperspace login', tone: 'neutral' },
+          { label: 'SSO via SMART on FHIR', sub: 'No separate login needed', tone: 'neutral' },
+          { label: 'Anemia Worklist loads', sub: 'Patients ranked by priority score', tone: 'mint' },
+          { label: 'Coordinator reviews patient card', sub: 'HGB, risk badge, visit positives, score', tone: 'mint' },
+        ],
+        branchLabel: 'Choose action',
+        branches: [
+          {
+            title: 'CDS Chat path',
+            footnote: 'Informational only',
+            steps: [
+              { label: 'CDS chat opens', sub: 'Inpatient / Pre-Op / OB agent', tone: 'lilac' },
+              { label: 'AI clinical summary', sub: 'Key concerns + actions', tone: 'lilac' },
+            ],
+          },
+          {
+            title: 'Generate Care Plan',
+            steps: [
+              { label: 'AI diagnosis + attestation', sub: 'Review, edit, attest diagnosis', tone: 'sky' },
+              { label: 'Evidence-based care plan', sub: 'Treatment goals + interventions', tone: 'sky' },
+              { label: 'Prior auth check', sub: 'AI approval % + Local Coverage Determination gaps', tone: 'amber' },
+              { label: 'Review medication order', sub: 'Safety checks + formulary', tone: 'sky' },
+              { label: 'Communicate care plan', sub: 'Physician, infusion, patient portal', tone: 'sky' },
+            ],
+          },
+        ],
+        terminal: { label: 'Epic alert sent to providers', sub: 'InBasket + patient portal', tone: 'mint' },
+        returnLabel: 'Return to worklist',
+        edgeCase: {
+          label: 'Edge case · one patient, two care needs',
+          body: "Some patients need care from more than one AI agent at the same time. For example, a pregnant patient who is also scheduled for surgery. Without a guardrail, each agent could generate its own plan and conflicting orders could end up in the patient's chart. We made one coordinator the single owner of the care plan, and built a check that catches duplicate orders before they're sent.",
+        },
+      },
+      {
+        type: 'flows',
+        kicker: 'Key Flows',
+        title: 'Key User Flows',
+        flows: [
+          {
+            number: '01',
+            title: 'Patient Worklist',
+            content: "Who's most at risk, why, and what to do next, answered in a single scan.",
+            decisions: [
+              { label: 'Risk-based ranking', body: 'Patients are sorted by clinical severity, so the highest-risk cases sit at the top of the worklist instead of in chart order.' },
+              { label: 'Labs on the row', body: 'Key blood markers (Hgb, ferritin, TSAT) show up directly on each row, so the coordinator can triage at a glance without opening the patient record.' },
+              { label: 'Care plan in one click', body: "A 'Generate care plan' action lives on every row, so the coordinator can move a patient forward without leaving the worklist." },
+            ],
+            image: { src: '', placeholder: 'FLOW 01 · Patient Worklist' },
+          },
+          {
+            number: '02',
+            title: 'Patient Detail',
+            content: 'A 3-tab modal reframed into one Epic-iframe-sized workspace.',
+            decisions: [
+              { label: 'Before', body: 'A 3-tab modal repeated the same patient information, and switching between patients meant closing it and starting again from the worklist.' },
+              { label: 'After', body: 'One workspace where the worklist stays visible on the side, alongside the clinical summary, CDS chat, and care plan generation.' },
+              { label: 'Why it matters', body: 'The coordinator can move between patients and tasks without losing context, which is the core of their day.' },
+            ],
+            image: { src: '', placeholder: 'FLOW 02 · Patient Detail' },
+          },
+          {
+            number: '03',
+            title: 'CDS Chat',
+            content: 'Where the AI works: summary, recommendation, citations, confidence, follow-up chat.',
+            decisions: [
+              { label: 'Confidence upfront', body: 'Every AI recommendation displays its confidence score next to the cited guideline, instead of being hidden in a tooltip.' },
+              { label: 'Action-first for critical cases', body: 'For the highest-acuity patients, the chat surfaces clear next actions inline so the coordinator does not have to read through a wall of text.' },
+              { label: 'Clinical evidence as chips', body: "The supporting reasoning behind every AI recommendation shows up as clinical evidence chips. Clicking a chip opens the underlying summary in place, so the coordinator can verify without leaving the chat." },
+            ],
+            image: { src: '', placeholder: 'FLOW 03 · CDS Chat' },
+          },
+          {
+            number: '04',
+            title: '5-Step Care Plan',
+            content: 'Stepper with hard-stop safety checks and confirmed delivery.',
+            decisions: [
+              { label: 'Before', body: 'No indicator of progress, no hard stop on risky decisions, and no confirmation that the care plan actually reached the patient or provider.' },
+              { label: 'After', body: 'A stepper shows where the coordinator is in the flow, separates AI suggestions (always with cited evidence) from the clinician action, and confirms the plan reached the right people via Epic In Basket and the patient portal.' },
+              { label: 'Authorship', body: 'The AI proposes with citations, and the clinician always holds the final action. That distinction is the design.' },
+            ],
+            image: { src: '', placeholder: 'FLOW 04 · 5-Step Care Plan' },
+          },
+        ],
+      },
+      {
+        type: 'principles',
+        tone: 'list',
+        kicker: 'Designing for AI Trust',
+        title: 'Designing AI that clinicians can verify in real time.',
+        content:
+          'Four design moves that turned an AI prototype into something a care coordinator will actually act on, inside Epic, on a real patient, in under two minutes.',
+        items: [
+          {
+            icon: 'shield',
+            title: 'Five hard-stop safety checks',
+            body: "Before any care plan can be sent, five clinical checks have to pass: Hgb threshold, contraindications, allergies, recent transfusion, and order conflicts. There is no override option, and whichever check is blocking is always named on screen so the coordinator knows exactly what stopped them.",
+          },
+          {
+            icon: 'gauge',
+            title: 'Confidence shown, not buried',
+            body: "Every AI recommendation displays its confidence score right next to the cited guideline, instead of hiding it in a tooltip. Low-confidence cases still generate a suggestion, but they surface a 'review needed' flag rather than blocking the coordinator from working.",
+          },
+          {
+            icon: 'book',
+            title: 'Two-click evidence trail',
+            body: "Each AI recommendation links to its source, whether that is an ASH guideline, an hc1-curated protocol, or a peer-reviewed study. The coordinator can verify the reasoning behind any suggestion in two clicks, without leaving the CDS chat.",
+          },
+          {
+            icon: 'refresh',
+            title: 'No memory between sessions',
+            body: "Every CDS chat session loads fresh against the latest patient state in Epic. The AI never carries a previous decision forward, so the coordinator always sees what is true about the patient right now.",
+          },
+        ],
+      },
+      {
+        type: 'workflow',
+        kicker: 'How I used AI through the process',
+        title: 'Four steps, one AI pipeline. Design-to-dev time cut by half.',
+        intro: 'Bolt → Claude → Claude Code → ship. Piloted on BloodHealth Copilot.',
+        stages: [
+          {
+            label: 'Vision',
+            title: 'Bolt + SMEs',
+            content: 'Translated clinical knowledge and business framing into a directional vision for the all-hands.',
+            image: { src: '', placeholder: 'STEP 01 · Bolt vision artefact' },
+          },
+          {
+            label: 'Prototype',
+            title: 'Claude · interactive prototype',
+            content: 'Vision + hc1 design system into Claude. Designer-driven prompts. Output went into review.',
+            image: { src: '', placeholder: 'STEP 02 · Interactive prototype' },
+          },
+          {
+            label: 'Tokenized code',
+            title: 'Claude Code · production-ready',
+            content: 'Design tokens in JSON + CLAUDE.md rules. Plan signed off before any code was written.',
+            image: { src: '', placeholder: 'STEP 03 · Tokenized front-end plan' },
+          },
+          {
+            label: 'Ship',
+            title: 'Engineering · MVP',
+            content: 'Approved plan to front-end. Debugged by engineers. UI signed off by me. Shipped.',
+            image: { src: '', placeholder: 'STEP 04 · Shipped MVP' },
+          },
+        ],
+        insight:
+          "Design-to-dev time dropped ~50%. The caveat: maintaining AI-generated code post-MVP is a real tech-debt risk. Iteration discipline matters more than generation speed.",
+      },
+      {
+        type: 'reflections',
+        kicker: 'Reflections & Lessons',
+        title: 'Learnings & Reflections.',
+        items: [
+          {
+            icon: 'users',
+            title: 'Clinical design is built on agreement, not approval.',
+            body: 'In clinical products, every design decision is also a clinical one. Bringing SMEs into the design conversation from the start, instead of treating them as reviewers at the end, turned weekly debates into weekly sign-offs and shaved weeks of rework off every release.',
+          },
+          {
+            icon: 'shield',
+            title: 'Make AI reasoning visible at the point of action.',
+            body: "Clinicians do not act on what they cannot verify. Surfacing the cited guideline, the confidence score, and the underlying evidence next to every AI recommendation turned a black-box suggestion into a decision a coordinator could defend.",
+          },
+          {
+            icon: 'gauge',
+            title: 'AI sharpens design thinking, it does not replace it.',
+            body: "Working with Claude throughout this project taught me that the bottleneck is no longer execution speed. It is clarity of intent. A vague prompt produces a clean-looking mess, while a precise one produces a shippable surface.",
+          },
+          {
+            icon: 'book',
+            title: 'Watch the workflow before designing for it.',
+            body: "Shadowing care coordinators through an actual anemia clinic shift surfaced edge cases that no spec or interview would have caught, like the multi-agent overlap on pregnant pre-surgical patients. Hours on the floor saved months of corrections after release.",
+          },
+        ],
+      },
+      {
+        type: 'testimonial',
+        kicker: 'Testimonial',
+        quote:
+          "Puja is a phenomenal product designer who balances a deep sense of empathy with high-level strategic thinking. Her work significantly optimized our customers' clinical workflows, which had a direct, positive impact on the quality of care they were able to provide.",
+        author: 'Tiffany Hall',
+        role: 'Director of cPBM Clinical Technology, hc1',
+        relation: 'Worked closely with Puja on the hc1 clinical product line',
+        date: 'May 2026',
+      },
+    ],
+  },
+  {
+    id: 'wfo',
+    label: 'Showcase 2',
+    title: 'Predictive staffing that lifts lab efficiency by 34%.',
+    accentPhrase: 'Predictive staffing',
+    handwriting: '34%',
+    shortTitle: 'hc1 Workforce Optimization',
+    description: 'hc1 identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
+    demoVideo: mp4('wfo-demo.mp4'),
+    color: '#F58126',
+    accent: '#F58126',
+    accentAlt: '#174F62',
+    accentWarm: '#F58126',
+    deep: '#174F62',
+    gradient: 'linear-gradient(180deg, rgba(245,129,38,0.06) 0%, rgba(255,255,255,0) 100%)',
+    gradientSoft: 'linear-gradient(135deg, rgba(245,129,38,0.06) 0%, rgba(23,79,98,0.05) 100%)',
+    heroVideo: '',
+    tags: ['UX Research', 'Systems Thinking', 'Data Visualization'],
+    meta: {
+      timeline: 'Apr 12 – Nov 20, 2024',
+      team: '1 PM · 2 Data Engineers · 3 Engineers · 1 UX Designer',
+      platform: 'Web · Desktop SaaS',
+    },
+    sections: [
+      {
+        type: 'role',
+        kicker: 'My Role',
+        title: 'Lead Product Designer, building from scratch.',
+        intro: 'Only designer on a 7-person team. I ran every phase: discovery, workshops, design system, five rounds of testing, and engineering handoff.',
+        items: [
+          {
+            number: '01',
+            title: 'Design workshops',
+            body: 'No design culture yet. I ran cross-functional workshops, designed 2-3 directions from each session, and got internal sign-off before anything moved forward.',
+          },
+          {
+            number: '02',
+            title: 'Discovery',
+            body: '4 interviews: 2 internal stakeholders with lab backgrounds, 2 existing customers. Their job stories shaped every major decision.',
+          },
+          {
+            number: '03',
+            title: 'First design system',
+            body: 'Figma style page, MUI as the base, custom components on top. That foundation became hc1\'s first design system.',
+          },
+        ],
+      },
+      {
+        type: 'brief',
+        kicker: 'Overview',
+        problem: 'Labs had timekeeping data and LIS data, but no way to see them together. Managers were burning $2,000/week on travel techs to hit TAT benchmarks while cutting budgets 3–5% annually, with no signal on whether they were over- or understaffed.',
+        painPoints: [
+          'No visibility into whether a department is over or understaffed on a given day',
+          'Cannot connect specimen volume spikes to staffing levels in real time',
+          'Predictive staffing doesn\'t exist; managers are scheduling 4–6 weeks ahead blind',
+          'Overspending on travel techs with no data to justify reallocation decisions',
+        ],
+        solution: 'A real-time staffing dashboard that connects timekeeping and lab volume, surfaces predictive recommendations with transparent reasoning, and tracks long-term financial and operational impact.',
+        metrics: [
+          { value: '18%', label: 'Labor cost reduction', direction: 'down' },
+          { value: '34%', label: 'Operational efficiency improvement', direction: 'up' },
+          { value: '20%', label: 'Productivity increase within 6 months', direction: 'up' },
+        ],
+      },
+      {
+        type: 'research-findings',
+        kicker: 'Research & Discovery',
+        title: 'The same problems surfaced in every conversation.',
+        findings: [
+          {
+            number: '01',
+            headline: '"Predictive is the most valuable thing you could give us."',
+            takeaway: 'Every customer surfaced the same need, unprompted.',
+            body: 'Managers are scheduling shifts weeks in advance with no signal on what volume will look like.',
+            image: '/wfo-f1.png',
+          },
+          {
+            number: '02',
+            headline: 'The staffing-volume connection is manual and broken.',
+            takeaway: 'Two systems, one spreadsheet, never real-time.',
+            body: 'Most managers run reports from separate systems, export to Excel, and manually reconcile.',
+            image: '/wfo-f2.png',
+          },
+          {
+            number: '03',
+            headline: 'Overstaffing is invisible.',
+            takeaway: 'Labs worry about understaffing. Overstaffing quietly bleeds budget.',
+            body: 'Multiple customers said they had no mechanism to even identify when a department was overstaffed.',
+            image: '/wfo-f3.png',
+          },
+          {
+            number: '04',
+            headline: 'Recommendations needed to feel actionable, not algorithmic.',
+            takeaway: 'Trust in the system was contingent on transparency.',
+            body: 'When I showed early concepts of AI-generated recommendations, the consistent reaction was: "I\'d want to know why."',
+            image: '/wfo-f4.png',
+          },
+          {
+            number: '05',
+            headline: 'Two very different users, one product.',
+            takeaway: 'Executives want a portfolio view. Managers need shift-level detail.',
+            body: 'The product had to serve both without forcing either into a compromised experience.',
+            image: '/wfo-f5.png',
+          },
+        ],
+      },
+      {
+        type: 'personas',
+        kicker: 'Understanding the User',
+        title: 'Understanding the user.',
+        intro: 'Two distinct personas emerged from research, with different goals, contexts, and definitions of success.',
+        personas: [
+          {
+            tag: 'Persona 01',
+            name: 'The Lab Manager',
+            quote: '"I need to know right now if my chemistry department is going to be short-staffed at 3pm."',
+            scope: 'Day-to-day across 1–3 departments',
+            motivation: 'Avoid TAT breaches · prevent burnout · catch problems early',
+            need: 'Real-time alerts · hourly granularity · actionable recommendations with clear reasoning',
+            frustration: 'Current tools are slow, high-level, or require IT to pull reports',
+          },
+          {
+            tag: 'Persona 02',
+            name: 'The Lab Executive',
+            quote: '"I need to show leadership we\'re not burning budget on overstaffing, and here\'s the data to prove it."',
+            scope: 'Multi-department / multi-facility · reports to C-suite',
+            motivation: 'Demonstrate ROI · defend staffing decisions with data · find reallocation wins',
+            need: 'Trend views · department comparisons · exportable financial summaries',
+            frustration: 'Benchmarking tools are 6 months stale; internal data lacks staffing context',
+          },
+        ],
+      },
+      {
+        type: 'design-flows',
+        kicker: 'Key Design Decisions',
+        title: 'Key Design Decisions.',
+        flows: [
+          {
+            number: '01',
+            title: 'KPI Dashboard',
+            tagline: 'Clarity at every level, without losing the depth.',
+            decision: 'Cut 11 KPIs → 7',
+            whyBullets: [
+              'Lab managers needed a 10-second read on staffing health, not an 11-metric audit.',
+              'Stakeholders needed a tool that drove faster decisions and reduced overtime spend.',
+              'Designed a three-layer hierarchy: 7 headline KPIs, a color-coded heatmap, trend graphs.',
+            ],
+            impact: 'A scannable surface that surfaced staffing risk without sacrificing investigability.',
+            video: mp4('wfo-flow-1.mp4'),
+            image: { src: '', placeholder: 'KPI Dashboard' },
+          },
+          {
+            number: '02',
+            title: 'Recommendations',
+            tagline: 'Confidence built into every recommendation.',
+            decision: 'ML-powered recommendations with transparent status tracking',
+            whyBullets: [
+              'Managers needed to trust the system before they would act on a recommendation.',
+              'The business needed adoption to prove ROI on the ML investment.',
+              'Designed a reasoning panel surfacing staffing gap, volume trend, and projected impact alongside each rec, paired with accept, defer, and decline states.',
+            ],
+            impact: 'Control stayed with the people closest to the lab, while the business got clear adoption signal.',
+            video: mp4('wfo-flow-2.mp4'),
+            image: { src: '', placeholder: 'Recommendations' },
+          },
+          {
+            number: '03',
+            title: 'Employee Drill',
+            tagline: 'One product. Two users. Zero compromises.',
+            decision: 'One product, two lenses: productivity and cost',
+            whyBullets: [
+              'Executives needed portfolio-level cost accountability: overtime burn, department comparisons, reallocation wins.',
+              'Managers needed shift-by-shift productivity and individual performance with health indicators.',
+              'Designed a single interactive drill where one click reshuffles the same data around the individual without losing context.',
+            ],
+            impact: 'One product earns trust at every level of the org, and the business ships and maintains one codebase.',
+            video: mp4('key-flow-3.mp4'),
+            image: { src: '', placeholder: 'Employee Drill' },
+          },
+          {
+            number: '04',
+            title: 'Configuration',
+            tagline: 'The hardest step in the product, made self-serve.',
+            decision: 'Long-form setup → department-by-department wizard',
+            whyBullets: [
+              'Lab admins needed to own setup without depending on IT.',
+              'The business needed fast implementation to prove value to pilot customers quickly.',
+              'Restructured as a guided wizard with progressive disclosure: one department at a time, advanced fields collapsed until needed.',
+            ],
+            impact: 'Admins completed setup in under an hour, shortening time-to-value for every new customer.',
+            video: mp4('key-flow-4.mp4'),
+            image: { src: '', placeholder: 'Configuration' },
+          },
+        ],
+      },
+      {
+        type: 'reflections',
+        kicker: 'Reflections & Lessons',
+        title: 'Learnings & Reflections.',
+        items: [
+          {
+            icon: 'merge',
+            title: 'Align on the why before the what.',
+            body: 'For products spanning financial, operational, and clinical data, every week without stakeholder alignment compounded into downstream rework.',
+          },
+          {
+            icon: 'layers',
+            title: 'Data-driven design lives in the edge cases.',
+            body: 'Working closely with data engineers, the hardest challenge was anticipating how very small datasets, very large datasets, or extreme values would change the visualizations. Empty, sparse, and overloaded states needed as much design attention as the happy path.',
+          },
+          {
+            icon: 'shield',
+            title: 'AI trust is built through transparency.',
+            body: 'Customers said "I\'d want to know why" before acting on a single recommendation. Surfacing the staffing gap, volume trend, and projected financial impact turned a black-box ML output into a decision a manager could defend.',
+          },
+          {
+            icon: 'users',
+            title: 'The persona\'s story is the rationale.',
+            body: 'Non-designers buy in when you walk them through the user\'s day, not when you hand them a design doc.',
+          },
+        ],
+      },
+      {
+        type: 'testimonial',
+        kicker: 'From the field',
+        quote: 'This dashboard has transformed how we approach staffing. We can now make data-driven decisions that benefit both our operations and our employees. It\'s become an essential tool for our management team.',
+        author: 'Laboratory Director',
+        role: 'Partner Organization',
+        relation: 'Pilot customer, 2024',
+        date: 'November 2024',
+      },
+    ],
+  },
+  {
+    id: 'dcc',
+    label: 'Showcase 3',
+    title: 'Shipping self-serve data control to 100% of hc1 customers.',
+    accentPhrase: 'self-serve data control',
+    handwriting: '100%',
+    shortTitle: 'Data Control Center',
+    description: 'Two legacy tools (one engineer-only, one feature-limited) unified into a single self-serve data platform inside hc1 Insights™.',
+    color: '#F58126',
+    accent: '#F58126',
+    accentAlt: '#1D828C',
+    accentWarm: '#F58126',
+    deep: '#0E2A35',
+    gradient: 'linear-gradient(180deg, rgba(245,129,38,0.06) 0%, rgba(255,255,255,0) 100%)',
+    gradientSoft: 'linear-gradient(135deg, rgba(245,129,38,0.08) 0%, rgba(29,130,140,0.08) 100%)',
+    heroVideo: '',
+    tags: ['Self-Serve SaaS', 'Build vs. Buy', 'Stakeholder Research'],
+    meta: {
+      role: 'Solo UX Designer',
+      timeline: 'Q1 – Q3 2025',
+      platform: 'hc1 Insights™ · B2B SaaS',
+      methods: 'Stakeholder Interviews · Competitive Analysis · Prototyping',
+      status: 'Shipped to all customers',
+    },
+    sections: [
+      {
+        type: 'overview',
+        kicker: 'Context',
+        question: 'The problem wasn\'t a missing feature. It was a structural gap.',
+        content:
+          "hc1 is a healthcare intelligence platform used by clinical labs, hospital systems, and diagnostics companies. Every customer has data in external systems (LIS, EMR, billing) that needs to stay in sync with hc1. Keeping that sync required opening a ticket and waiting.",
+        outcome:
+          'Data Control Center replaces two legacy tools with one customer-facing surface: schedulable imports, full record-type coverage, a live file log, and self-serve exports, all without involving hc1 staff.',
+        metrics: [
+          { value: '2', label: 'legacy tools customers couldn\'t access', tone: 'warm' },
+          { value: '0%', label: 'self-serve before this project', tone: 'warm' },
+          { value: '~2 wk', label: 'activation time lost per customer', tone: 'teal' },
+        ],
+        artifact: {
+          src: '',
+          placeholder: 'HERO · File Log dashboard — unified landing screen (paste here)',
+        },
+      },
+      {
+        type: 'role',
+        kicker: 'My Role',
+        title: 'Solo UX Designer · Q1 – Q3 2025',
+        intro:
+          'I owned the upstream framing and the design: stakeholder interviews, the build-vs.-buy decision, IA, prototyping, and exec sign-off before any code was written.',
+        items: [
+          {
+            number: '01',
+            title: 'Framed the problem upstream',
+            body: 'Interviewed Service Delivery, Integration Engineering, and the legacy FileLoader team. Reframed the brief from adding a feature to closing a competitive gap.',
+          },
+          {
+            number: '02',
+            title: 'Build-vs-buy evaluation',
+            body: 'Evaluated Flatfile across 5 dimensions before committing to build in-house. Documented the decision and got exec sign-off.',
+          },
+          {
+            number: '03',
+            title: 'IA, prototyping, scope-setting',
+            body: 'Designed the unified File Log and 4-step guided import. Scoped MVP to guided self-serve and pushed full DIY to the MLP backlog.',
+          },
+        ],
+      },
+      {
+        type: 'overview',
+        kicker: 'Insight',
+        question: 'Stakeholder interviews revealed the real cost.',
+        content:
+          'Every major CRM competitor (Salesforce, Dynamics, HubSpot, Sugar) had a productized data management layer. hc1 didn\'t. The gap wasn\'t just UX. It was a competitive liability.',
+        artifact: {
+          src: '',
+          placeholder: 'INSIGHT · Pull quote callout — "Service Delivery was spending the first 2 weeks of every customer activation just on data loading and validation" (paste screenshot or skip)',
+        },
+      },
+      {
+        type: 'comparison',
+        kicker: 'Build vs. Buy',
+        title: 'I evaluated Flatfile before committing to build.',
+        intro:
+          'Flatfile is an embeddable data import SDK with strong usability scores. A structured evaluation across 5 dimensions revealed critical blockers.',
+        dimensions: [
+          { name: 'Usability',     flatfile: 5, inhouse: 4, flatfileNote: 'Polished UX',           inhouseNote: 'Strong if owned' },
+          { name: 'Time to Ship',  flatfile: 4, inhouse: 3, flatfileNote: 'SDK ready',             inhouseNote: 'Longer build path' },
+          { name: 'Cost',          flatfile: 1, inhouse: 5, flatfileNote: '~$10K / yr recurring', inhouseNote: 'No recurring cost', flatfileWarn: true },
+          { name: 'Product Fit',   flatfile: 4, inhouse: 5, flatfileNote: 'Generic data model',    inhouseNote: 'hc1 schema native' },
+          { name: 'HIPAA / Multi-tenancy', flatfile: 2, inhouse: 5, flatfileNote: 'External dep + complexity', inhouseNote: 'Full schema + tenant control', flatfileWarn: true },
+        ],
+        verdict:
+          'Build in-house. Flatfile\'s $10K/yr cost, HIPAA deployment complexity, and dependency on an external roadmap outweighed its usability edge.',
+      },
+      {
+        type: 'principles',
+        tone: 'orange',
+        kicker: 'Design Decisions',
+        title: 'Three calls that shaped the product.',
+        items: [
+          {
+            icon: 'merge',
+            title: 'Unify two tools into one mental model',
+            body: 'Users didn\'t think in terms of FileLoader vs. Bulk Import. They thought: get data in and out. Collapsed both into the Data Control Center with the File Log as the landing screen.',
+          },
+          {
+            icon: 'layers',
+            title: 'Replace mapping with a guided 4-step flow',
+            body: 'Reframed the import as Select → Upload → Preview + Operation → Confirm. Each step does one thing. Auto-matched fields. Visual confirmation. No silent failures.',
+          },
+          {
+            icon: 'shield',
+            title: 'Guided self-serve, not full DIY',
+            body: 'In healthcare, a bad import can corrupt patient records. Scoped MVP to guided self-serve with SD on activation. Full DIY moved to MLP backlog with explicit readiness criteria.',
+          },
+        ],
+        artifact: {
+          src: '',
+          placeholder: 'DECISIONS · 3 screens — File Log · Column Mapping · Upload step (paste here)',
+        },
+      },
+      {
+        type: 'flows',
+        kicker: 'The Solution',
+        title: 'A 4-step guided import.',
+        note: 'Each step does one thing. No blank-page problem, no silent failures.',
+        flows: [
+          {
+            number: '01',
+            title: 'Select Destination',
+            content: 'Pick the hc1 object to import into. One decision, nothing else on screen.',
+            image: { src: '', placeholder: 'STEP 01 · Table Selection screen (paste here)' },
+          },
+          {
+            number: '02',
+            title: 'Upload File',
+            content: 'Drag and drop CSV. Spec sheet download inline, before any error happens.',
+            image: { src: '', placeholder: 'STEP 02 · CSV Upload with spec-sheet download (paste here)' },
+          },
+          {
+            number: '03',
+            title: 'Preview + Operation',
+            content: 'See the actual rows. Choose Upsert, Insert, or Purge & Overwrite.',
+            image: { src: '', placeholder: 'STEP 03 · Preview + operation picker (paste here)' },
+          },
+          {
+            number: '04',
+            title: 'Success',
+            content: 'Row count, source, destination. Direct link back to the File Log.',
+            image: { src: '', placeholder: 'STEP 04 · Success state with row count (paste here)' },
+          },
+        ],
+      },
+      {
+        type: 'status',
+        kicker: 'Impact',
+        title: 'Shipped to all customers. Zero additional cost.',
+        items: [
+          { label: 'Legacy tools', value: '2 → 1', state: 'done' },
+          { label: 'Customer coverage', value: '100%, free upgrade', state: 'done' },
+          { label: 'Exec sign-off', value: 'Used in live customer demos pre-build', state: 'done' },
+          { label: 'Status', value: 'Shipped Q3 2025', state: 'done' },
+        ],
+      },
+      {
+        type: 'quotes',
+        kicker: 'Customer Voice',
+        title: 'What customers told us, post-launch.',
+        items: [
+          { quote: 'We can now automate data syncs and make adjustments any time we need to, very easily. This has really increased our efficiency.', takeaway: 'Enterprise Customer' },
+          { quote: "We've been able to stop wasting time on data cleanup and focus on lead-generating activities much faster now.", takeaway: 'Sales Leader · Lab Customer' },
+          { quote: 'Now we have an intuitive feature to pull down records, perform a bulk find & replace, then re-upload at the push of a button.', takeaway: 'System Admin · Hospital System' },
+          { quote: 'I now have the ability to schedule an automated data file pickup from hc1, custom mapped to our LIS output. If anything goes wrong, I get a proactive alert.', takeaway: 'LIS Manager · Diagnostics Lab' },
+        ],
+      },
+      {
+        type: 'reflections',
+        kicker: 'Reflections',
+        title: "What I'd do differently. What this reinforced.",
+        items: [
+          { title: 'Phase 2 never shipped.', body: 'Auto-mapping, validation preview, scheduled exports were all deferred when priorities shifted. A well-scoped MVP ships. That\'s the trade-off worth naming.' },
+          { title: 'Usability testing earlier.', body: 'SDA/IE feedback caught interaction gaps I should have seen sooner. Structured walkthroughs with 2 to 3 internal power users would have locked the mapping model faster.' },
+          { title: 'The build-vs-buy call mattered most.', body: 'The highest-leverage design contribution wasn\'t a wireframe. It was the structured evaluation that shaped what got built and why.' },
+          { title: 'Scope as a design skill.', body: "Pushing back on full unguided self-serve in healthcare was an active design decision, not a compromise. Knowing what *not* to build is half the job." },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'slate',
+    title: 'Designing AI-assisted decision-making into an enterprise project management dashboard',
+    shortTitle: 'Slate',
+    description: 'Enterprise Project Management with AI',
+    color: '#A1A1A1',
+    gradient: 'linear-gradient(135deg, #A1A1A1 0%, #808080 100%)',
+    sections: [
+      {
+        type: 'overview',
+        title: 'Overview',
+        content: 'Slate is an enterprise project management platform that integrates AI-assisted decision-making to help teams manage complex projects efficiently. The platform combines intuitive task management with intelligent insights.',
+      },
+      {
+        type: 'problem',
+        title: 'The Challenge',
+        content: 'Enterprise teams struggle with project complexity, decision-making delays, and information overload. Traditional project management tools lack intelligent insights needed for data-driven decisions.',
+        painPoints: [
+          'Information scattered across tools',
+          'Slow decision-making processes',
+          'Lack of predictive insights',
+          'Team collaboration friction',
+        ],
+      },
+      {
+        type: 'solution',
+        title: 'Our Solution',
+        content: 'We designed an intelligent project management dashboard that surfaces actionable insights, predicts risks, and recommends actions using AI.',
+        features: [
+          'AI-powered task prioritization',
+          'Risk prediction models',
+          'Intelligent resource allocation',
+          'Smart timeline recommendations',
+          'Real-time team collaboration',
+        ],
+      },
+      {
+        type: 'results',
+        title: 'Results & Impact',
+        content: 'The platform significantly improved project delivery times and decision-making efficiency.',
+        metrics: [
+          { label: 'Decision Time Reduced', value: '40%' },
+          { label: 'Project Success Rate', value: '92%' },
+          { label: 'Team Adoption', value: '89%' },
+          { label: 'ROI', value: '3.5x' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'ostello',
+    title: 'Empowering Students with End-to-End Career Guidance Through Personalised Roadmaps',
+    shortTitle: 'OstelloAI',
+    description: 'AI Coach & Assistance for Career Guidance',
+    color: '#9747FF',
+    gradient: 'linear-gradient(135deg, #9747FF 0%, #7B68EE 100%)',
+    sections: [
+      {
+        type: 'overview',
+        title: 'Overview',
+        content: 'OstelloAI is a personalized career guidance platform that helps students navigate their career paths with AI-powered coaching and interactive roadmaps. The platform combines machine learning with human insights to provide tailored career recommendations.',
+      },
+      {
+        type: 'problem',
+        title: 'The Challenge',
+        content: 'Students face overwhelming career decisions without personalized guidance. Traditional career counseling is expensive and one-size-fits-all approaches don\'t account for individual strengths, interests, and market dynamics. The gap between academic learning and industry requirements creates confusion and delays in career planning.',
+        painPoints: [
+          'Lack of personalized guidance',
+          'Limited access to mentorship',
+          'Disconnect between education and industry',
+          'Information overload without clear direction',
+        ],
+      },
+      {
+        type: 'solution',
+        title: 'Our Solution',
+        content: 'We designed an intelligent career platform that provides personalized roadmaps, real-time job market insights, and AI coaching. The solution includes interactive skill assessments, milestone tracking, and mentor connections.',
+        features: [
+          'AI-powered career assessments',
+          'Personalized learning roadmaps',
+          'Real-time job market insights',
+          'Mentor network access',
+          'Progress tracking & milestones',
+        ],
+      },
+      {
+        type: 'results',
+        title: 'Results & Impact',
+        content: 'The platform successfully guided thousands of students toward their career goals with measurable outcomes.',
+        metrics: [
+          { label: 'Students Guided', value: '5,000+' },
+          { label: 'Career Paths Mapped', value: '500+' },
+          { label: 'Success Rate', value: '87%' },
+          { label: 'User Satisfaction', value: '4.8/5' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'dotspot',
+    title: 'AI & Interactive Maps to Cut Fines and Boost Accessibility',
+    shortTitle: 'DotSpot',
+    description: 'University of Maryland Parking Solution',
+    color: '#18A0FB',
+    gradient: 'linear-gradient(135deg, #18A0FB 0%, #0088FF 100%)',
+    sections: [
+      {
+        type: 'overview',
+        title: 'Overview',
+        content: 'DotSpot is an innovative parking solution that uses AI-assisted navigation and interactive maps to help users find accessible parking spots quickly, reducing fines and improving campus accessibility.',
+      },
+      {
+        type: 'problem',
+        title: 'The Challenge',
+        content: 'Campus parking is challenging with limited spaces, accessibility concerns, and high citation rates. Students struggle to find available spots, leading to illegally parked vehicles and fines.',
+      },
+      {
+        type: 'solution',
+        title: 'Our Solution',
+        content: 'An AI-powered parking app with real-time space detection, accessible spot prioritization, and smart navigation.',
+      },
+      {
+        type: 'results',
+        title: 'Results & Impact',
+        content: 'Awarded best AI/ML project at DOTS - University of Maryland. Reduced parking violations by 40% and improved accessibility compliance.',
+      },
+    ],
+  },
+  {
+    id: 'speakaboo',
+    title: 'Elevating Speakaboo\'s Accessibility with Seamless AI Voice Guide & Spatial Audio Interaction',
+    shortTitle: 'Speakaboo',
+    description: 'Accessibility & Spatial Audio',
+    color: '#1BC47D',
+    gradient: 'linear-gradient(135deg, #1BC47D 0%, #00B359 100%)',
+    sections: [
+      {
+        type: 'overview',
+        title: 'Overview',
+        content: 'Speakaboo is an accessibility-focused platform enhanced with AI voice guidance and spatial audio interactions for blind and low-vision users.',
+      },
+      {
+        type: 'problem',
+        title: 'The Challenge',
+        content: 'Blind and low-vision users struggle with traditional navigation interfaces. Current accessibility features are often afterthoughts rather than core design considerations.',
+      },
+      {
+        type: 'solution',
+        title: 'Our Solution',
+        content: 'Implemented intuitive voice navigation, spatial audio feedback, and accessible UI components designed specifically for screen reader users.',
+      },
+      {
+        type: 'results',
+        title: 'Results & Impact',
+        content: 'Significantly improved accessibility scores and user satisfaction among visually impaired users.',
+      },
+    ],
+  },
+];

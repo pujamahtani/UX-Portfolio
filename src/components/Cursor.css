@@ -1,0 +1,85 @@
+/* ── Figma-Style Cursor ──────────────────────────────────── */
+
+.figma-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  /* Offset so the arrow tip aligns with actual mouse position */
+  margin-left: -2px;
+  margin-top: -2px;
+}
+
+.figma-cursor-arrow {
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+  transition: transform 0.15s ease;
+}
+
+.figma-cursor--hover .figma-cursor-arrow {
+  transform: scale(0.85);
+}
+
+/* Subtle ring that appears on hover over interactive elements */
+.figma-cursor-ring {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(151, 71, 255, 0.35);
+  background: rgba(151, 71, 255, 0.06);
+  pointer-events: none;
+}
+
+/* Prevent cursor from disappearing when page loses focus */
+@media (prefers-reduced-motion: no-preference) {
+  .figma-cursor {
+    will-change: transform;
+  }
+}
+/* ── Figma Tooltip Cursor ── */
+.figma-tooltip-cursor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: -4px;
+  margin-top: -2px;
+}
+
+.figma-arrow-pointer {
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.18));
+  transform-origin: top left;
+  margin-bottom: -8px;
+  margin-left: -2px;
+}
+
+.figma-tooltip-label {
+  background: #FFEA7A;
+  color: #333333;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22), 0 1px 4px rgba(0, 0, 0, 0.1);
+  max-width: 380px;
+  line-height: 1.4;
+  margin-left: 14px;
+}
+
+.figma-tooltip-label--you {
+  background: #9747FF;
+  color: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 10px;
+}

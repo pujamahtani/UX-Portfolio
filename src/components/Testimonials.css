@@ -1,0 +1,92 @@
+#testimonials {
+  background: var(--bg);
+}
+
+.figjam-board {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+  padding: 40px;
+  background: #FAFAFA;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .figjam-board {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+.figjam-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ccc 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.figjam-sticky-wrap {
+  position: relative;
+  z-index: 2;
+  cursor: none;
+}
+
+.figjam-sticky {
+  border-radius: 4px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5);
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.figjam-sticky-wrap:hover .figjam-sticky {
+  transform: scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5);
+  z-index: 10;
+}
+
+.figjam-author {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.figjam-text {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif; /* Figjam marker font fallback vibe */
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.8);
+  flex: 1;
+}
+
+.collaborator-cursor {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.collaborator-tag {
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-top: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  white-space: nowrap;
+}

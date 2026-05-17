@@ -1,0 +1,141 @@
+/* ── Elegant Bento Skills Section ── */
+#skills.bento-skills {
+  padding: 140px 24px;
+  background-color: #fff;
+  position: relative;
+}
+
+.bs-header {
+  margin-bottom: 80px;
+  text-align: center;
+}
+
+.bs-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.bs-eyebrow::before, .bs-eyebrow::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--border2);
+}
+
+.bs-title {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* ── Bento Grid Layout ── */
+.bs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .bs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .bs-card-2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .bs-grid {
+    grid-template-columns: 1fr;
+  }
+  .bs-card-2 {
+    grid-column: span 1;
+  }
+  #skills.bento-skills {
+    padding: 100px 24px;
+  }
+}
+
+/* ── Bento Card ── */
+.bs-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 320px;
+  transition: all 0.4s ease;
+}
+
+.bs-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.15);
+}
+[data-theme="dark"] .bs-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  border-color: rgba(255,255,255,0.15);
+}
+
+.bsc-top {
+  margin-bottom: 40px;
+}
+
+.bsc-title {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+
+.bsc-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Tags List ── */
+.bsc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bsc-tag {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 8px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+[data-theme="dark"] .bsc-tag {
+  background: rgba(255,255,255,0.02);
+}
+
+.bs-card:hover .bsc-tag:hover {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+  transform: scale(1.05);
+}
+[data-theme="dark"] .bs-card:hover .bsc-tag:hover {
+  background: #fff;
+  color: #111;
+  border-color: #fff;
+}

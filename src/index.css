@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap');
+
+:root {
+  --purple:   #9747FF;
+  --blue:     #18A0FB;
+  --green:    #1BC47D;
+  --orange:   #FF7262;
+  --yellow:   #FFCD29;
+  --pink:     #F24E1E;
+
+  --bg:       #FAFAFA;
+  --bg2:      #FFFFFF;
+  --bg3:      #F0F0F0;
+  --surface:  #ffffff;
+  --border:   rgba(0,0,0,0.06);
+  --border2:  rgba(0,0,0,0.12);
+  --text:     #111111;
+  --muted:    #666666;
+  --muted2:   #888888;
+
+  --font-sans: 'Satoshi', sans-serif;
+  --font-ui: 'Inter', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+  --font-hand: 'Caveat', cursive;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  cursor: none !important;
+}
+
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  overflow-x: hidden;
+  cursor: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(151, 71, 255, 0.2);
+}
+
+a, button {
+  cursor: none;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+/* Background noise pattern - specific for light mode */
+.noise-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.15;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Canvas Grid Pattern */
+.canvas-grid {
+  position: absolute;
+  inset: 0;
+  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(to right, rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-position: top left;
+  pointer-events: none;
+  z-index: 0;
+}
+
+section {
+  position: relative;
+  z-index: 10;
+  padding: 100px 24px;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 11px;
+  font-family: var(--font-ui);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--muted);
+}
+
+.section-title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.section-sub {
+  color: var(--muted2);
+  font-size: 16px;
+  max-width: 480px;
+  line-height: 1.6;
+  font-weight: 500;
+  margin-bottom: 60px;
+}
+
+/* Base App Wrapper */
+.portfolio-app {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}

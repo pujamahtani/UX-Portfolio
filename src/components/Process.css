@@ -1,0 +1,143 @@
+/* ── Editorial Design Process Section ── */
+#process.editorial-process {
+  padding: 160px 24px;
+  background-color: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.ep-header {
+  margin-bottom: 100px;
+  text-align: left;
+}
+
+.ep-eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.ep-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background-color: var(--border2);
+}
+
+.ep-title {
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+/* ── List Layout ── */
+.ep-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.ep-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+.ep-row:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.ep-row:hover {
+  opacity: 1;
+}
+.ep-list:hover .ep-row:not(:hover) {
+  opacity: 0.4;
+}
+
+.ep-row-left {
+  flex: 0 0 50%;
+  padding-right: 40px;
+  position: relative;
+}
+
+.ep-num {
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  font-size: clamp(120px, 15vw, 180px);
+  font-weight: 800;
+  line-height: 0.8;
+  color: rgba(0,0,0,0.03);
+  letter-spacing: -0.05em;
+  z-index: 0;
+  pointer-events: none;
+}
+[data-theme="dark"] .ep-num {
+  color: rgba(255,255,255,0.03);
+}
+
+.ep-step-title {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.ep-row-right {
+  flex: 0 0 50%;
+  padding-top: 24px;
+}
+
+.ep-desc {
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 420px;
+}
+
+/* ══════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
+  #process.editorial-process {
+    padding: 100px 24px;
+  }
+  
+  .ep-header {
+    margin-bottom: 60px;
+  }
+
+  .ep-row {
+    flex-direction: column;
+    padding: 60px 0;
+  }
+  
+  .ep-row-left {
+    flex: 0 0 100%;
+    padding-right: 0;
+    margin-bottom: 24px;
+  }
+
+  .ep-num {
+    top: -20px;
+    left: -10px;
+    font-size: 100px;
+  }
+
+  .ep-row-right {
+    flex: 0 0 100%;
+    padding-top: 0;
+  }
+}
