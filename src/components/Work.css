@@ -102,7 +102,6 @@
   display: flex;
   flex: 1;
   font-family: var(--font-sans);
-  will-change: box-shadow;
   transition: box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -113,8 +112,7 @@
 .pw-card-locked {
   cursor: default;
   pointer-events: auto;
-  opacity: 0.6;
-  filter: grayscale(0.3);
+  opacity: 0.55;
 }
 
 .pw-card-locked:hover {
@@ -791,8 +789,7 @@
 }
 
 .browser-body.browser-body-modal .browser-img-bg {
-  filter: blur(4px);
-  transform: scale(1.04);
+  opacity: 0.4;
 }
 
 .browser-body.browser-body-modal .browser-modal {

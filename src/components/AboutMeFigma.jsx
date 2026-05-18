@@ -114,12 +114,10 @@ const AboutMeFigma = () => {
                         y: offset * 10,
                         scale: 1 - offset * 0.04,
                         rotate: offset === 0 ? 0 : (offset % 2 === 0 ? 2.5 : -2.5),
-                        opacity: 1,
-                        zIndex: total - offset,
                       }}
                       transition={{ type: 'spring', stiffness: 260, damping: 28 }}
-                      whileDrag={{ scale: 1.04, zIndex: 99 }}
-                      style={{ cursor: isTop ? 'grab' : 'default' }}
+                      whileDrag={{ scale: 1.04 }}
+                      style={{ cursor: isTop ? 'grab' : 'default', zIndex: total - offset, opacity: 1 }}
                     >
                       {card.fit === 'contain' && (
                         <img src={card.src} alt="" aria-hidden="true" className="amf-card-bg" draggable="false" />
