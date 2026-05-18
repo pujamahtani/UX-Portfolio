@@ -7,6 +7,7 @@ const Cursor = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [cursorText, setCursorText] = useState('');
   const [isVisible, setIsVisible] = useState(true);
+  const [inHero, setInHero] = useState(false);
 
   useEffect(() => {
     const updatePosition = (e) => {
@@ -40,6 +41,13 @@ const Cursor = () => {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
+    // Track hero entry/exit via mouseenter/mouseleave — fires far less than mousemove
+    const heroEl = document.getElementById('hero');
+    const onHeroEnter = () => setInHero(true);
+    const onHeroLeave = () => setInHero(false);
+    heroEl?.addEventListener('mouseenter', onHeroEnter);
+    heroEl?.addEventListener('mouseleave', onHeroLeave);
+
     window.addEventListener('mousemove', updatePosition);
     window.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseleave', handleMouseLeave);
@@ -50,6 +58,8 @@ const Cursor = () => {
       window.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
+      heroEl?.removeEventListener('mouseenter', onHeroEnter);
+      heroEl?.removeEventListener('mouseleave', onHeroLeave);
     };
   }, []);
 
@@ -61,27 +71,38 @@ const Cursor = () => {
       animate={{ x: position.x, y: position.y, opacity: isVisible ? 1 : 0 }}
       transition={{ type: 'spring', stiffness: 1200, damping: 40, mass: 0.1 }}
     >
-      <div className={`figma-tooltip-cursor${!cursorText ? ' figma-tooltip-cursor--you' : ''}`}>
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-          className={`figma-arrow-pointer${!cursorText ? ' figma-arrow-pointer--you' : ''}`}>
-          <path d="M3 3 L19 3 L8 18 Z"
-            fill={cursorText ? '#FFEA7A' : '#9747FF'}
-            stroke={cursorText ? '#FFEA7A' : '#9747FF'}
-            strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/>
+      {inHero && !cursorText ? (
+        <svg
+          className="figma-cursor-plus"
+          width="22" height="22" viewBox="0 0 22 22" fill="none"
+          style={{ marginLeft: '-11px', marginTop: '-11px' }}
+        >
+          <path d="M11 1V21M1 11H21" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" />
+          <path d="M11 1V21M1 11H21" stroke="#111111" strokeWidth="2" strokeLinecap="round" />
         </svg>
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={labelText}
-            className={`figma-tooltip-label${!cursorText ? ' figma-tooltip-label--you' : ''}`}
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -4 }}
-            transition={{ duration: 0.15, ease: 'easeOut' }}
-          >
-            {labelText}
-          </motion.div>
-        </AnimatePresence>
-      </div>
+      ) : (
+        <div className={`figma-tooltip-cursor${!cursorText ? ' figma-tooltip-cursor--you' : ''}`}>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+            className={`figma-arrow-pointer${!cursorText ? ' figma-arrow-pointer--you' : ''}`}>
+            <path d="M3 3 L19 3 L8 18 Z"
+              fill={cursorText ? '#FFEA7A' : '#9747FF'}
+              stroke={cursorText ? '#FFEA7A' : '#9747FF'}
+              strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/>
+          </svg>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={labelText}
+              className={`figma-tooltip-label${!cursorText ? ' figma-tooltip-label--you' : ''}`}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -4 }}
+              transition={{ duration: 0.15, ease: 'easeOut' }}
+            >
+              {labelText}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      )}
     </motion.div>
   );
 };
