@@ -37,23 +37,32 @@ const Hero = () => {
     }
   };
 
+  const LOOP_START = 60;  // start at 1:00
+  const LOOP_END   = 180; // end at 3:00, then jump back
+
   const togglePlay = (e) => {
     e.stopPropagation();
-    setIsPlaying(!isPlaying);
     const audio = document.getElementById('music-audio');
-    if (audio) {
-      if (!isPlaying) audio.play().catch(e => console.log('Audio error:', e));
-      else audio.pause();
+    if (!audio) return;
+    if (!isPlaying) {
+      if (audio.currentTime < LOOP_START || audio.currentTime >= LOOP_END) {
+        audio.currentTime = LOOP_START;
+      }
+      audio.play().catch(() => {});
+      audio.ontimeupdate = () => {
+        if (audio.currentTime >= LOOP_END) audio.currentTime = LOOP_START;
+      };
+    } else {
+      audio.pause();
     }
+    setIsPlaying(!isPlaying);
   };
 
   return (
     <motion.section id="hero" ref={constraintsRef} onClick={handleCanvasClick}>
       <div className="hero-glow"></div>
 
-      {/* Audio elements - Using placeholder URLs */}
-      <audio id="intro-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" preload="auto"></audio>
-      <audio id="music-audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" preload="auto"></audio>
+      <audio id="music-audio" src="https://res.cloudinary.com/df77bvytq/video/upload/v1779088141/Hugel_SOLTO_FR_-_Jamaican_Bam_Bam_Extended_Mix__mp3.pm_enky9o.mp3" preload="none"></audio>
 
       <motion.svg className="deco-shape" style={{ top: '15%', left: '20%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -10, 0], rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
         <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#FFCD29"/>
