@@ -138,7 +138,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.div className="selection-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.7 }}>
-        <div className="resizable-box">
+        <div className="resizable-box" data-cursor="Hi, I am Puja Mahtani">
           <div className="sel-box"></div>
           <div className="sel-label">Puja Mahtani / Available for work</div>
           <div className="sel-handle sh-tl"></div>
