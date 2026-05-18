@@ -63,7 +63,6 @@ const Cursor = () => {
     };
   }, []);
 
-  const labelText = cursorText || 'You';
 
   return (
     <motion.div
@@ -80,28 +79,32 @@ const Cursor = () => {
           <path d="M11 1V21M1 11H21" stroke="#FFFFFF" strokeWidth="5" strokeLinecap="round" />
           <path d="M11 1V21M1 11H21" stroke="#111111" strokeWidth="2" strokeLinecap="round" />
         </svg>
-      ) : (
-        <div className={`figma-tooltip-cursor${!cursorText ? ' figma-tooltip-cursor--you' : ''}`}>
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
-            className={`figma-arrow-pointer${!cursorText ? ' figma-arrow-pointer--you' : ''}`}>
+      ) : cursorText ? (
+        <div className="figma-tooltip-cursor">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" className="figma-arrow-pointer">
             <path d="M3 3 L19 3 L8 18 Z"
-              fill={cursorText ? '#FFEA7A' : '#9747FF'}
-              stroke={cursorText ? '#FFEA7A' : '#9747FF'}
+              fill="#FFEA7A" stroke="#FFEA7A"
               strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/>
           </svg>
           <AnimatePresence mode="wait">
             <motion.div
-              key={labelText}
-              className={`figma-tooltip-label${!cursorText ? ' figma-tooltip-label--you' : ''}`}
+              key={cursorText}
+              className="figma-tooltip-label"
               initial={{ opacity: 0, y: 4 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               transition={{ duration: 0.15, ease: 'easeOut' }}
             >
-              {labelText}
+              {cursorText}
             </motion.div>
           </AnimatePresence>
         </div>
+      ) : (
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="figma-arrow-default">
+          <path d="M3 2 L17 2 L7 17 Z"
+            fill="#1a1a1a" stroke="#ffffff"
+            strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round"/>
+        </svg>
       )}
     </motion.div>
   );
