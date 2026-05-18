@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './AboutMeFigma.css';
 
@@ -51,6 +51,11 @@ const AboutMeFigma = () => {
 
   const advance = () => setIndex((i) => (i + 1) % total);
   const previous = () => setIndex((i) => (i - 1 + total) % total);
+
+  useEffect(() => {
+    const timer = setInterval(advance, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="about-home" className="figma-about-section">

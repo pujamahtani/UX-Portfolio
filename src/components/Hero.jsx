@@ -6,7 +6,7 @@ import songCover from '../assets/song_cover.png';
 
 const Hero = () => {
   const constraintsRef = useRef(null);
-  const [clickNote, setClickNote] = useState({ visible: false, x: 0, y: 0 });
+  const [clickNote, setClickNote] = useState({ visible: true, x: '5%', y: '30%' });
   const [isPlaying, setIsPlaying] = useState(false);
 
   const lineVariant = {
@@ -122,7 +122,7 @@ const Hero = () => {
         whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, delay: 1.2 }}
         drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
       >
-        📍 Based in New Jersey
+        📍 Based in United States
       </motion.div>
 
       {/* Flip Card Math Fun Fact */}

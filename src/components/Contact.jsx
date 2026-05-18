@@ -27,7 +27,7 @@ const Contact = () => {
                   strokeLinejoin="round"
                 />
               </svg>
-              <p>Crafted with <span className="footer-heart">♥</span> in Figma MCP + Claude Code.</p>
+              <p>Crafted with <span className="footer-heart">♥</span> using Figma MCP + Claude Code.</p>
               <p>Thanks for stopping by, you rock.</p>
             </div>
           </div>
