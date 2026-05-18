@@ -1,14 +1,14 @@
 const VIDEOS = {
   'case-study1.mp4':  'https://res.cloudinary.com/df77bvytq/video/upload/v1779066541/case-study1_vr6lze.mp4',
-  'flow-1.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066537/flow-1_uga0vb.mp4',
-  'flow-2.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066603/flow-2_bcju9w.mp4',
-  'flow-3.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066546/flow-3_qm2va1.mp4',
-  'flow-4.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066628/flow-4_jgnkon.mp4',
-  'key-flow-3.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066617/key-flow-3_qnotwk.mp4',
-  'key-flow-4.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066515/key-flow-4_io63yv.mp4',
+  'flow-1.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066537/flow-1_uga0vb.mp4',
+  'flow-2.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066603/flow-2_bcju9w.mp4',
+  'flow-3.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066546/flow-3_qm2va1.mp4',
+  'flow-4.mp4':       'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066628/flow-4_jgnkon.mp4',
+  'key-flow-3.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066617/key-flow-3_qnotwk.mp4',
+  'key-flow-4.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066515/key-flow-4_io63yv.mp4',
   'wfo-demo.mp4':     'https://res.cloudinary.com/df77bvytq/video/upload/v1779066578/wfo-demo_xtith5.mp4',
-  'wfo-flow-1.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066571/wfo-flow-1_e09a4w.mp4',
-  'wfo-flow-2.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim/v1779066538/wfo-flow-2_h5snaj.mp4',
+  'wfo-flow-1.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066571/wfo-flow-1_e09a4w.mp4',
+  'wfo-flow-2.mp4':   'https://res.cloudinary.com/df77bvytq/video/upload/e_trim:10/v1779066538/wfo-flow-2_h5snaj.mp4',
 };
 const mp4 = (name) => VIDEOS[name] || '';
 
