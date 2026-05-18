@@ -53,14 +53,25 @@ const AboutMeFigma = () => {
   const previous = () => setIndex((i) => (i - 1 + total) % total);
 
   useEffect(() => {
-    const timer = setInterval(advance, 3000);
-    return () => clearInterval(timer);
+    let timer;
+    const section = document.getElementById('about-home');
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          timer = setInterval(advance, 3000);
+        } else {
+          clearInterval(timer);
+        }
+      },
+      { threshold: 0.1 }
+    );
+    if (section) observer.observe(section);
+    return () => { clearInterval(timer); observer.disconnect(); };
   }, []);
 
   return (
     <section id="about-home" className="figma-about-section">
       <div className="section-inner" style={{ maxWidth: '1080px', margin: '0 auto', position: 'relative' }}>
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-10%' }}>
           <h2 className="pw-title" style={{ margin: 0, marginBottom: '40px', textAlign: 'left' }}>
             <span className="pw-title-circled">
               A little about me:
@@ -76,7 +87,6 @@ const AboutMeFigma = () => {
               </svg>
             </span>
           </h2>
-        </motion.div>
       </div>
       <div className="section-inner figma-main-frame" style={{ maxWidth: '1200px' }}>
         <div className="amf-container">
@@ -142,31 +152,31 @@ const AboutMeFigma = () => {
                   <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#9747FF"/>
                 </svg>
 
-                {/* Skill chips — float on the edges of the photo with breathing room */}
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '4%', left: '-26%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }}>
+                {/* Skill chips */}
+                <div className="figma-comp-tag amf-chip" style={{ top: '4%', left: '-26%' }}>
                   <span className="fc-icon" style={{ color: '#9747FF' }}>❖</span> AI Prototyping
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '28%', left: '-30%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.15 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '28%', left: '-30%' }}>
                   <span className="fc-icon" style={{ color: '#FF7262' }}>❖</span> UX Research
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '52%', left: '-32%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '52%', left: '-32%' }}>
                   <span className="fc-icon" style={{ color: '#1BC47D' }}>❖</span> Rapid Prototyping
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '76%', left: '-24%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '76%', left: '-24%' }}>
                   <span className="fc-icon" style={{ color: '#FFCD29' }}>❖</span> Storytelling
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '4%', right: '-22%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '4%', right: '-22%' }}>
                   <span className="fc-icon" style={{ color: '#F24E1E' }}>❖</span> Design Systems
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '28%', right: '-26%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '28%', right: '-26%' }}>
                   <span className="fc-icon" style={{ color: '#9747FF' }}>❖</span> Prompt Design
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '52%', right: '-28%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '52%', right: '-28%' }}>
                   <span className="fc-icon" style={{ color: '#18A0FB' }}>❖</span> Interaction Design
-                </motion.div>
-                <motion.div className="figma-comp-tag amf-chip" style={{ top: '76%', right: '-22%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}>
+                </div>
+                <div className="figma-comp-tag amf-chip" style={{ top: '76%', right: '-22%' }}>
                   <span className="fc-icon" style={{ color: '#FFCD29' }}>❖</span> Strategic Thinking
-                </motion.div>
+                </div>
               </div>
 
               <div className="amf-card-meta">

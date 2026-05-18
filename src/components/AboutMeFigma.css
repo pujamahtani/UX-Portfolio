@@ -33,7 +33,6 @@
 .amf-deco {
   position: absolute;
   pointer-events: none;
-  will-change: transform, opacity;
 }
 .amf-deco-circle-green  { animation: amf-float-bounce 4.4s ease-in-out infinite; }
 .amf-deco-star-yellow   { animation: amf-float-cw     9s   linear       infinite; }
