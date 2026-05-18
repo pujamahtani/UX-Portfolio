@@ -43,9 +43,8 @@ const Contact = () => {
               </svg>
             </a>
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/resume.docx"
+              download
               className="footer-link"
             >
               <span className="footer-link-text">Resume</span>

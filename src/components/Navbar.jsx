@@ -90,7 +90,7 @@ const Navbar = () => {
 
         {/* CTA Section */}
         <div className="nav-cta-container">
-          <a href="mailto:pujamahtani@gmail.com" className="nav-cta">Resume</a>
+          <a href="/resume.docx" download className="nav-cta">Resume</a>
         </div>
       </div>
     </motion.nav>
