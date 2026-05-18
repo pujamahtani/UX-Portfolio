@@ -98,10 +98,12 @@
   width: calc(100% + 32px);
   height: calc(100% + 32px);
   object-fit: cover;
-  filter: blur(28px) saturate(1.3);
+  filter: blur(20px) saturate(1.2);
   opacity: 0.85;
   pointer-events: none;
   z-index: 1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .amf-card-meta {

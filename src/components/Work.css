@@ -46,6 +46,7 @@
   margin-top: 32px;
   display: flex;
   flex-direction: column;
+  will-change: transform, opacity;
 }
 
 .pw-card-wrap.wide { grid-column: span 2; }

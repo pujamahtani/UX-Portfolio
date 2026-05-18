@@ -47,28 +47,27 @@ const Hero = () => {
     <motion.section id="hero" ref={constraintsRef} onClick={handleCanvasClick}>
       <div className="hero-glow"></div>
 
-<motion.svg className="deco-shape" style={{ top: '15%', left: '20%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -10, 0], rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
+<svg className="deco-shape deco-star-yellow" style={{ top: '15%', left: '20%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#FFCD29"/>
-      </motion.svg>
-      <motion.svg className="deco-shape" style={{ bottom: '30%', right: '25%' }} width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -15, 0], rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}>
+      </svg>
+      <svg className="deco-shape deco-star-red" style={{ bottom: '30%', right: '25%' }} width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#FF7262"/>
-      </motion.svg>
-      <motion.svg className="deco-shape" style={{ top: '25%', right: '15%' }} width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, 20, 0], scale: [1, 1.2, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}>
+      </svg>
+      <svg className="deco-shape deco-circle-green" style={{ top: '25%', right: '15%' }} width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="10" fill="#1BC47D"/>
-      </motion.svg>
-      <motion.svg className="deco-shape" style={{ bottom: '15%', left: '15%' }} width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -10, 0], rotate: [0, 45, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}>
+      </svg>
+      <svg className="deco-shape deco-rect-blue" style={{ bottom: '15%', left: '15%' }} width="35" height="35" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="4" y="4" width="16" height="16" fill="#18A0FB" rx="4"/>
-      </motion.svg>
-      {/* Sparkle Stars */}
-      <motion.svg className="deco-shape" style={{ top: '10%', left: '40%' }} width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}>
+      </svg>
+      <svg className="deco-shape deco-sparkle-red" style={{ top: '10%', left: '40%' }} width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#FF7262"/>
-      </motion.svg>
-      <motion.svg className="deco-shape" style={{ bottom: '20%', right: '6%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}>
+      </svg>
+      <svg className="deco-shape deco-sparkle-green" style={{ bottom: '20%', right: '6%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#1BC47D"/>
-      </motion.svg>
-      <motion.svg className="deco-shape" style={{ top: '60%', left: '10%' }} width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}>
+      </svg>
+      <svg className="deco-shape deco-sparkle-yellow" style={{ top: '60%', left: '10%' }} width="25" height="25" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#FFCD29"/>
-      </motion.svg>
+      </svg>
 
       {/* Click-to-add Sticky Notes (Food & Travel) */}
       <AnimatePresence>

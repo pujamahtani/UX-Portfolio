@@ -22,10 +22,10 @@ const Work = () => {
   const handleClinicalLeave = pauseRef(clinicalVideoRef);
 
   const cardVars = {
-    hidden: { opacity: 0, y: 60, filter: 'blur(6px)' },
+    hidden: { opacity: 0, y: 40 },
     visible: {
-      opacity: 1, y: 0, filter: 'blur(0px)',
-      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+      opacity: 1, y: 0,
+      transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
