@@ -86,8 +86,8 @@ const AboutMeFigma = () => {
               <div className="amf-card-stack">
                 {ABOUT_CARDS.map((card, i) => {
                   const offset = (i - index + total) % total;
+                  if (offset > 2) return null;
                   const isTop = offset === 0;
-                  const stackPos = offset > 2 ? 3 : offset;
                   return (
                     <motion.div
                       key={card.src}
@@ -101,11 +101,11 @@ const AboutMeFigma = () => {
                       }}
                       animate={{
                         x: 0,
-                        y: stackPos * 10,
-                        scale: 1 - stackPos * 0.04,
-                        rotate: stackPos === 0 ? 0 : (stackPos % 2 === 0 ? 2.5 : -2.5),
-                        opacity: stackPos > 2 ? 0 : 1,
-                        zIndex: total - stackPos,
+                        y: offset * 10,
+                        scale: 1 - offset * 0.04,
+                        rotate: offset === 0 ? 0 : (offset % 2 === 0 ? 2.5 : -2.5),
+                        opacity: 1,
+                        zIndex: total - offset,
                       }}
                       transition={{ type: 'spring', stiffness: 260, damping: 28 }}
                       whileDrag={{ scale: 1.04, zIndex: 99 }}
@@ -119,33 +119,28 @@ const AboutMeFigma = () => {
                   );
                 })}
 
-                {/* Figma deco shapes — scattered around the image (none below image so caption stays clear) */}
-                {/* Top row */}
-                <motion.svg className="amf-deco" style={{ top: '-10%', left: '-16%', zIndex: 50 }} width="16" height="16" viewBox="0 0 24 24" fill="none" animate={{ y: [0, 8, 0], scale: [1, 1.15, 1] }} transition={{ duration: 4.4, repeat: Infinity, ease: 'easeInOut' }}>
+                {/* Figma deco shapes — CSS-animated, no JS RAF loops */}
+                <svg className="amf-deco amf-deco-circle-green" style={{ top: '-10%', left: '-16%', zIndex: 50 }} width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <circle cx="12" cy="12" r="10" fill="#1BC47D"/>
-                </motion.svg>
-                <motion.svg className="amf-deco" style={{ top: '-14%', left: '46%', zIndex: 50 }} width="22" height="22" viewBox="0 0 24 24" fill="none" animate={{ y: [0, -8, 0], rotate: 360 }} transition={{ duration: 9, repeat: Infinity, ease: 'linear' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-star-yellow" style={{ top: '-14%', left: '46%', zIndex: 50 }} width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#FFCD29"/>
-                </motion.svg>
-                <motion.svg className="amf-deco" style={{ top: '-8%', right: '-14%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none" animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-sparkle-purple" style={{ top: '-8%', right: '-14%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#9747FF"/>
-                </motion.svg>
-
-                {/* Middle row (far sides, between chip rows 2 & 3) */}
-                <motion.svg className="amf-deco" style={{ top: '40%', left: '-48%', zIndex: 50 }} width="20" height="20" viewBox="0 0 24 24" fill="none" animate={{ y: [0, -10, 0], rotate: [0, 45, 0] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-rect-blue" style={{ top: '40%', left: '-48%', zIndex: 50 }} width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <rect x="4" y="4" width="16" height="16" fill="#18A0FB" rx="4"/>
-                </motion.svg>
-                <motion.svg className="amf-deco" style={{ top: '40%', right: '-48%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none" animate={{ scale: [1, 1.2, 1], opacity: [0.6, 1, 0.6] }} transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-sparkle-red" style={{ top: '40%', right: '-48%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="#FF7262"/>
-                </motion.svg>
-
-                {/* Bottom flanks (well away from the centre caption) */}
-                <motion.svg className="amf-deco" style={{ bottom: '-2%', left: '-16%', zIndex: 50 }} width="16" height="16" viewBox="0 0 24 24" fill="none" animate={{ y: [0, -6, 0], rotate: [0, -45, 0] }} transition={{ duration: 4.6, repeat: Infinity, ease: 'easeInOut' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-rect-red" style={{ bottom: '-2%', left: '-16%', zIndex: 50 }} width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <rect x="4" y="4" width="16" height="16" fill="#FF7262" rx="4"/>
-                </motion.svg>
-                <motion.svg className="amf-deco" style={{ bottom: '-4%', right: '-14%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none" animate={{ y: [0, 8, 0], rotate: -360 }} transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}>
+                </svg>
+                <svg className="amf-deco amf-deco-star-purple" style={{ bottom: '-4%', right: '-14%', zIndex: 50 }} width="18" height="18" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#9747FF"/>
-                </motion.svg>
+                </svg>
 
                 {/* Skill chips — float on the edges of the photo with breathing room */}
                 <motion.div className="figma-comp-tag amf-chip" style={{ top: '4%', left: '-26%' }} initial={{ y: 10, opacity: 0 }} whileInView={{ y: 0, opacity: 1 }} transition={{ delay: 0.05 }}>
