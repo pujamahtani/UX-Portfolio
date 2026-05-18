@@ -3,14 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './AboutMeFigma.css';
 
 const ABOUT_CARDS = [
-  { src: '/about-0.jpg', caption: 'Things that I reallyyy enjoy' },
-  { src: '/about-1.jpg', caption: 'Coffee & bagel combination', fit: 'contain' },
-  { src: '/about-2.jpg', caption: 'Watching Gilmore Girls while cooking' },
-  { src: '/about-3.jpg', caption: 'Sunsets on the Beach' },
-  { src: '/about-4.jpg', caption: 'Pizza! All time anytime' },
-  { src: '/about-6.jpg', caption: 'Matcha! In any shape & form' },
-  { src: '/about-7.jpg', caption: 'Sipping & painting' },
-  { src: '/about-8.jpg', caption: 'Traveling & exploring' },
+  { src: '/about-0.webp', caption: 'Things that I reallyyy enjoy' },
+  { src: '/about-1.webp', caption: 'Coffee & bagel combination', fit: 'contain' },
+  { src: '/about-2.webp', caption: 'Watching Gilmore Girls while cooking' },
+  { src: '/about-3.webp', caption: 'Sunsets on the Beach' },
+  { src: '/about-4.webp', caption: 'Pizza! All time anytime' },
+  { src: '/about-6.webp', caption: 'Matcha! In any shape & form' },
+  { src: '/about-7.webp', caption: 'Sipping & painting' },
+  { src: '/about-8.webp', caption: 'Traveling & exploring' },
 ];
 
 const BIO_TABS = {

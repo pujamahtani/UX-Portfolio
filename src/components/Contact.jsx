@@ -1,6 +1,6 @@
 import React from 'react';
 import './Contact.css';
-import userIllustration from '../assets/user_illustration.png';
+import userIllustration from '../assets/user_illustration.webp';
 
 const Contact = () => {
   return (

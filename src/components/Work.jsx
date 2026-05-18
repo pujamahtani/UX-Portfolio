@@ -120,7 +120,7 @@ const Work = () => {
                     <div className="browser-url">workforce.hc1.com</div>
                   </div>
                   <div className="browser-body wfo-browser-body">
-                    <img src="/wfo-main1.png" alt="hc1 Workforce Optimization dashboard" className="browser-img" />
+                    <img src="/wfo-main1.webp" alt="hc1 Workforce Optimization dashboard" className="browser-img" />
                   </div>
                 </div>
               </div>
@@ -154,7 +154,7 @@ const Work = () => {
                     <div className="browser-url">datacontrolcenter.hc1.com</div>
                   </div>
                   <div className="browser-body">
-                    <img src="/dcc-background.png" alt="Data Control Center" className="browser-img" />
+                    <img src="/dcc-background.webp" alt="Data Control Center" className="browser-img" />
                   </div>
                 </div>
               </div>

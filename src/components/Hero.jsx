@@ -1,8 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Hero.css';
-import userIllustration from '../assets/user_illustration.png';
-import songCover from '../assets/song_cover.png';
+import userIllustration from '../assets/user_illustration.webp';
+import songCover from '../assets/song_cover.webp';
 import { useAudio } from '../AudioContext';
 
 const Hero = () => {
