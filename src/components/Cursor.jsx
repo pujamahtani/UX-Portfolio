@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './Cursor.css';
 
@@ -8,6 +8,7 @@ const Cursor = () => {
   const [cursorText, setCursorText] = useState('');
   const [isVisible, setIsVisible] = useState(true);
   const [inHero, setInHero] = useState(false);
+  const inHeroRef = useRef(false);
 
   useEffect(() => {
     const updatePosition = (e) => {
@@ -17,6 +18,14 @@ const Cursor = () => {
 
     const handleMouseOver = (e) => {
       const target = e.target;
+
+      // Hero detection via event delegation — works even after loader unmounts
+      const nowInHero = !!target.closest('#hero');
+      if (nowInHero !== inHeroRef.current) {
+        inHeroRef.current = nowInHero;
+        setInHero(nowInHero);
+      }
+
       const customCursorEl = target.closest('[data-cursor]');
       if (customCursorEl) {
         setCursorText(customCursorEl.getAttribute('data-cursor'));
@@ -41,13 +50,6 @@ const Cursor = () => {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Track hero entry/exit via mouseenter/mouseleave — fires far less than mousemove
-    const heroEl = document.getElementById('hero');
-    const onHeroEnter = () => setInHero(true);
-    const onHeroLeave = () => setInHero(false);
-    heroEl?.addEventListener('mouseenter', onHeroEnter);
-    heroEl?.addEventListener('mouseleave', onHeroLeave);
-
     window.addEventListener('mousemove', updatePosition);
     window.addEventListener('mouseover', handleMouseOver);
     document.addEventListener('mouseleave', handleMouseLeave);
@@ -58,8 +60,6 @@ const Cursor = () => {
       window.removeEventListener('mouseover', handleMouseOver);
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
-      heroEl?.removeEventListener('mouseenter', onHeroEnter);
-      heroEl?.removeEventListener('mouseleave', onHeroLeave);
     };
   }, []);
 
