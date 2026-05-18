@@ -4076,3 +4076,74 @@
   .pp-dflow-impact { font-size: 13px; }
 }
 
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .pp {
+    padding: 12px;
+  }
+
+  .pp-hero {
+    padding: 80px 0 32px;
+  }
+
+  .pp-hero-title {
+    font-size: clamp(24px, 7vw, 40px) !important;
+  }
+
+  .pp-hero-desc {
+    font-size: 15px;
+  }
+
+  .pp-overview-split {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .pp-overview-stats {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+  }
+
+  .pp-wfsplit {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .pp-wfsplit-art {
+    position: static !important;
+    top: unset !important;
+  }
+
+  .pp-dflows {
+    grid-template-columns: 1fr !important;
+  }
+
+  .pp-cflow-phases {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  .pp-cflow-tracks {
+    flex-direction: column !important;
+  }
+
+  .pp-prevnext {
+    gap: 12px;
+    flex-direction: column;
+  }
+
+  .pp-resume-cta {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
+
+  .pp-section {
+    margin: 0 -12px;
+    padding: 28px 12px;
+  }
+
+  .pp-role-items {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}

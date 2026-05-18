@@ -301,3 +301,61 @@
   z-index: 1;
   opacity: 0.8;
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  #hero {
+    min-height: 100svh;
+    padding: 80px 20px 40px;
+    overflow: hidden;
+  }
+
+  .hero-content-flex {
+    flex-direction: column-reverse;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .hero-illustration {
+    width: 200px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(36px, 10vw, 52px) !important;
+    text-align: center;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .selection-wrap {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .resizable-box {
+    width: 100% !important;
+  }
+
+  /* Hide draggable sticky notes on mobile — they overflow/overlap */
+  .sticky-note {
+    display: none !important;
+  }
+
+  /* Hide decorative shapes */
+  .deco-shape {
+    display: none;
+  }
+
+  .canvas-grid {
+    display: none;
+  }
+}

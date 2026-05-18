@@ -285,3 +285,71 @@
   font-size: 14px;
   color: var(--muted);
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .figma-about-section {
+    padding: 48px 0;
+  }
+
+  .amf-container {
+    flex-direction: column;
+    gap: 48px;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  .amf-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .amf-card-stack-wrap {
+    width: min(300px, 86vw);
+  }
+
+  .amf-card-stack {
+    width: min(300px, 86vw);
+    height: min(370px, 106vw);
+  }
+
+  .amf-img-wrap {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  /* Hide floating skill chips — they overflow on mobile */
+  .amf-chip {
+    display: none !important;
+  }
+
+  /* Hide decorative SVG shapes */
+  .amf-deco {
+    display: none !important;
+  }
+
+  .amf-bio {
+    width: 100%;
+    padding: 24px 16px;
+  }
+
+  .amf-bio-framed {
+    margin: 0;
+  }
+
+  .amf-text {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .amf-card-stack-wrap {
+    width: 90vw;
+  }
+  .amf-card-stack {
+    width: 90vw;
+    height: calc(90vw * 1.23);
+  }
+}

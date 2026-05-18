@@ -188,7 +188,7 @@
   justify-content: space-between;
   max-width: 1140px;
   margin: 0 auto;
-  gap: 200px;
+  gap: clamp(32px, 8vw, 200px);
 }
 
 .footer-left {

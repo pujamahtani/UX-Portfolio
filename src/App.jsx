@@ -37,15 +37,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
+    if (isMobile) return; // native scroll on mobile — no lag, no delay
     const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 1,
+      duration: 0.7,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
       smoothTouch: false,
-      touchMultiplier: 2,
     });
 
     function raf(time) {

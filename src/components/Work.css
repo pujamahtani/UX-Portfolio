@@ -821,3 +821,52 @@
   }
   .browser-url { font-size: 10px; max-width: 50%; }
 }
+
+/* ── Mobile Responsive ── */
+@media (max-width: 768px) {
+  .pw-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+  }
+
+  .pw-card {
+    flex-direction: column !important;
+  }
+
+  .pw-card-left {
+    padding: 28px 24px 20px !important;
+    width: 100% !important;
+  }
+
+  .pw-card-right {
+    width: 100% !important;
+    padding: 0 16px 16px !important;
+  }
+
+  .pw-card-right.browser-side {
+    padding: 0 !important;
+  }
+
+  .pw-title {
+    font-size: clamp(24px, 7vw, 36px) !important;
+  }
+
+  .pw-card-title {
+    font-size: clamp(18px, 5vw, 24px) !important;
+  }
+
+  .pw-card-desc {
+    font-size: 14px !important;
+  }
+
+  .pw-tag {
+    font-size: 11px !important;
+    padding: 3px 10px !important;
+  }
+
+  /* Hide complex dashboard mockups on mobile */
+  .sd-sidebar,
+  .sd-task-grid {
+    display: none !important;
+  }
+}
