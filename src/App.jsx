@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './index.css';
 import './App.css';
 
+import { AudioProvider } from './AudioContext';
 import Loader from './components/Loader';
 import Cursor from './components/Cursor';
 import Hero from './components/Hero';
@@ -44,6 +45,7 @@ function App() {
   };
 
   return (
+    <AudioProvider>
     <div className="portfolio-app">
       {!currentPage.startsWith('/project/') && <div className="noise-bg"></div>}
       {!currentPage.startsWith('/project/') && <div className="canvas-grid"></div>}
@@ -109,6 +111,7 @@ function App() {
         )}
       </AnimatePresence>
     </div>
+    </AudioProvider>
   );
 }
 

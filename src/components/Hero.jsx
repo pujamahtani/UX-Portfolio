@@ -3,11 +3,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import './Hero.css';
 import userIllustration from '../assets/user_illustration.png';
 import songCover from '../assets/song_cover.png';
+import { useAudio } from '../AudioContext';
 
 const Hero = () => {
   const constraintsRef = useRef(null);
   const [clickNote, setClickNote] = useState({ visible: true, x: '5%', y: '30%' });
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying, togglePlay } = useAudio();
 
   const lineVariant = {
     hidden: { y: '100%' },
@@ -37,34 +38,16 @@ const Hero = () => {
     }
   };
 
-  const LOOP_START = 60;  // start at 1:00
-  const LOOP_END   = 180; // end at 3:00, then jump back
-
-  const togglePlay = (e) => {
+  const handleTogglePlay = (e) => {
     e.stopPropagation();
-    const audio = document.getElementById('music-audio');
-    if (!audio) return;
-    if (!isPlaying) {
-      if (audio.currentTime < LOOP_START || audio.currentTime >= LOOP_END) {
-        audio.currentTime = LOOP_START;
-      }
-      audio.play().catch(() => {});
-      audio.ontimeupdate = () => {
-        if (audio.currentTime >= LOOP_END) audio.currentTime = LOOP_START;
-      };
-    } else {
-      audio.pause();
-    }
-    setIsPlaying(!isPlaying);
+    togglePlay();
   };
 
   return (
     <motion.section id="hero" ref={constraintsRef} onClick={handleCanvasClick}>
       <div className="hero-glow"></div>
 
-      <audio id="music-audio" src="https://res.cloudinary.com/df77bvytq/video/upload/v1779088141/Hugel_SOLTO_FR_-_Jamaican_Bam_Bam_Extended_Mix__mp3.pm_enky9o.mp3" preload="none"></audio>
-
-      <motion.svg className="deco-shape" style={{ top: '15%', left: '20%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -10, 0], rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
+<motion.svg className="deco-shape" style={{ top: '15%', left: '20%' }} width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -10, 0], rotate: 360 }} transition={{ duration: 10, repeat: Infinity, ease: "linear" }}>
         <path d="M12 2L15 9L22 12L15 15L12 22L9 15L2 12L9 9L12 2Z" fill="#FFCD29"/>
       </motion.svg>
       <motion.svg className="deco-shape" style={{ bottom: '30%', right: '25%' }} width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" animate={{ y: [0, -15, 0], rotate: -360 }} transition={{ duration: 12, repeat: Infinity, ease: "linear" }}>
@@ -110,7 +93,7 @@ const Hero = () => {
         whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, delay: 1 }}
         drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
       >
-        <div className="music-cover" onClick={togglePlay} style={{ width: '56px', height: '56px', borderRadius: '10px', backgroundImage: `url(${songCover})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div className="music-cover" onClick={handleTogglePlay} style={{ width: '56px', height: '56px', borderRadius: '10px', backgroundImage: `url(${songCover})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           {isPlaying ? (
              <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           ) : (
