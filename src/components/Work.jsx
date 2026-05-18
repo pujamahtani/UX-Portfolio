@@ -136,7 +136,7 @@ const Work = () => {
             <span className="pw-frame-handle br" />
             <span className="pw-frame-handle ml" />
             <span className="pw-frame-handle mr" />
-            <a href="#" onClick={(e) => e.preventDefault()} className="pw-card wide slate-card pw-card-locked" data-cursor="Coming Soon">
+            <div className="pw-card wide slate-card" data-cursor="Coming Soon">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
                   Self-serve data control that saved <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">$10K/yr</span></span> in vendor costs.
@@ -153,13 +153,12 @@ const Work = () => {
                     <span className="browser-dot green" />
                     <div className="browser-url">datacontrolcenter.hc1.com</div>
                   </div>
-                  <div className="browser-body browser-body-modal">
-                    <img src="/dcc-background.png" alt="Data Control Center" className="browser-img browser-img-bg" />
-                    <img src="/dcc-modal.png" alt="Import Data modal" className="browser-modal" />
+                  <div className="browser-body">
+                    <img src="/dcc-background.png" alt="Data Control Center" className="browser-img" />
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           </motion.div>
 
         </div>
