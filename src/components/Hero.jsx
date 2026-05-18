@@ -135,7 +135,7 @@ const Hero = () => {
           <div className="flip-card-front" style={{ background: '#FFF5C2', borderRadius: '4px' }}>
             <span style={{ fontSize: '10px', color: '#888', fontWeight: 600, letterSpacing: '0.5px' }}>✨ FUN FACT</span>
             <div style={{ fontSize: '18px', fontWeight: 700, margin: '8px 0' }}>Did you<br/>know?</div>
-            <span className="note-subtext">hover to reveal ✨</span>
+            <span className="note-subtext" style={{ fontSize: '13px' }}>hover to reveal ✨</span>
           </div>
           <div className="flip-card-back">
             <span style={{ fontSize: '24px' }}>☕</span>
