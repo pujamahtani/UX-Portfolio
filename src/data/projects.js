@@ -154,11 +154,6 @@ export const projectsData = [
             number: '02',
             title: 'Patient Detail',
             content: 'A 3-tab modal reframed into one Epic-iframe-sized workspace.',
-            decisions: [
-              { label: 'Before', body: 'A 3-tab modal repeated the same patient information, and switching between patients meant closing it and starting again from the worklist.' },
-              { label: 'After', body: 'One workspace where the worklist stays visible on the side, alongside the clinical summary, CDS chat, and care plan generation.' },
-              { label: 'Why it matters', body: 'The coordinator can move between patients and tasks without losing context, which is the core of their day.' },
-            ],
             video: mp4('flow-2.mp4'),
             image: { src: '', placeholder: 'FLOW 02 · Patient Detail' },
           },
@@ -178,11 +173,6 @@ export const projectsData = [
             number: '04',
             title: '5-Step Care Plan',
             content: 'Stepper with hard-stop safety checks and confirmed delivery.',
-            decisions: [
-              { label: 'Before', body: 'No indicator of progress, no hard stop on risky decisions, and no confirmation that the care plan actually reached the patient or provider.' },
-              { label: 'After', body: 'A stepper shows where the coordinator is in the flow, separates AI suggestions (always with cited evidence) from the clinician action, and confirms the plan reached the right people via Epic In Basket and the patient portal.' },
-              { label: 'Authorship', body: 'The AI proposes with citations, and the clinician always holds the final action. That distinction is the design.' },
-            ],
             video: mp4('flow-4.mp4'),
             image: { src: '', placeholder: 'FLOW 04 · 5-Step Care Plan' },
           },
