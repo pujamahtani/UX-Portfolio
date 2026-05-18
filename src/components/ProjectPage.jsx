@@ -178,7 +178,7 @@ const WorkflowSection = ({ section }) => {
           <div className="pp-wfsplit-art-frame">
             {stages.map((stage, i) => (
               <div key={i} className={`pp-wfsplit-art-layer ${activeIdx === i ? 'pp-wfsplit-art-active' : ''}`}>
-                <ArtifactSlot artifact={stage.image} aspect="4 / 5" />
+                <ArtifactSlot artifact={stage.image} aspect="16 / 9" />
               </div>
             ))}
             <div className="pp-wfsplit-art-counter">{activeIdx + 1} / {stages.length}</div>
@@ -992,7 +992,13 @@ const ProjectPage = ({ projectId }) => {
                         </ul>
                       )}
                     </header>
-                    <ArtifactSlot artifact={flow.image} aspect="16 / 9" className="pp-flow-art" />
+                    {flow.video ? (
+                      <div className="pp-flow-art pp-flow-art-video">
+                        <VideoArtifact src={flow.video} />
+                      </div>
+                    ) : (
+                      <ArtifactSlot artifact={flow.image} aspect="16 / 9" className="pp-flow-art" />
+                    )}
                   </motion.div>
                 ))}
               </motion.div>
@@ -1292,36 +1298,64 @@ const ProjectPage = ({ projectId }) => {
         aria-label="Project navigation"
       >
         {prevProject ? (
-          <motion.a
-            href={`/project/${prevProject.id}`}
-            onClick={(e) => {
-              e.preventDefault();
-              window.history.pushState({}, '', `/project/${prevProject.id}`);
-              window.dispatchEvent(new Event('customNavigate'));
-            }}
-            className="pp-prevnext-link pp-prevnext-prev"
-            variants={fadeUp}
-          >
-            <span className="pp-prevnext-dir">← Previous</span>
-            <span className="pp-prevnext-title">{prevProject.shortTitle}</span>
-          </motion.a>
+          prevProject.comingSoon ? (
+            <motion.div
+              className="pp-prevnext-link pp-prevnext-prev pp-prevnext-disabled"
+              variants={fadeUp}
+              role="link"
+              aria-disabled="true"
+              title="Coming soon"
+            >
+              <span className="pp-prevnext-dir">← Previous</span>
+              <span className="pp-prevnext-title">{prevProject.shortTitle}</span>
+              <span className="pp-prevnext-soon">Coming soon</span>
+            </motion.div>
+          ) : (
+            <motion.a
+              href={`/project/${prevProject.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', `/project/${prevProject.id}`);
+                window.dispatchEvent(new Event('customNavigate'));
+              }}
+              className="pp-prevnext-link pp-prevnext-prev"
+              variants={fadeUp}
+            >
+              <span className="pp-prevnext-dir">← Previous</span>
+              <span className="pp-prevnext-title">{prevProject.shortTitle}</span>
+            </motion.a>
+          )
         ) : (
           <span className="pp-prevnext-empty pp-prevnext-prev" aria-hidden="true" />
         )}
         {nextProject ? (
-          <motion.a
-            href={`/project/${nextProject.id}`}
-            onClick={(e) => {
-              e.preventDefault();
-              window.history.pushState({}, '', `/project/${nextProject.id}`);
-              window.dispatchEvent(new Event('customNavigate'));
-            }}
-            className="pp-prevnext-link pp-prevnext-next"
-            variants={fadeUp}
-          >
-            <span className="pp-prevnext-dir">Next →</span>
-            <span className="pp-prevnext-title">{nextProject.shortTitle}</span>
-          </motion.a>
+          nextProject.comingSoon ? (
+            <motion.div
+              className="pp-prevnext-link pp-prevnext-next pp-prevnext-disabled"
+              variants={fadeUp}
+              role="link"
+              aria-disabled="true"
+              title="Coming soon"
+            >
+              <span className="pp-prevnext-dir">Next →</span>
+              <span className="pp-prevnext-title">{nextProject.shortTitle}</span>
+              <span className="pp-prevnext-soon">Coming soon</span>
+            </motion.div>
+          ) : (
+            <motion.a
+              href={`/project/${nextProject.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                window.history.pushState({}, '', `/project/${nextProject.id}`);
+                window.dispatchEvent(new Event('customNavigate'));
+              }}
+              className="pp-prevnext-link pp-prevnext-next"
+              variants={fadeUp}
+            >
+              <span className="pp-prevnext-dir">Next →</span>
+              <span className="pp-prevnext-title">{nextProject.shortTitle}</span>
+            </motion.a>
+          )
         ) : (
           <span className="pp-prevnext-empty pp-prevnext-next" aria-hidden="true" />
         )}

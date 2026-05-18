@@ -139,6 +139,7 @@ export const projectsData = [
               { label: 'Labs on the row', body: 'Key blood markers (Hgb, ferritin, TSAT) show up directly on each row, so the coordinator can triage at a glance without opening the patient record.' },
               { label: 'Care plan in one click', body: "A 'Generate care plan' action lives on every row, so the coordinator can move a patient forward without leaving the worklist." },
             ],
+            video: mp4('flow-1.mp4'),
             image: { src: '', placeholder: 'FLOW 01 · Patient Worklist' },
           },
           {
@@ -150,6 +151,7 @@ export const projectsData = [
               { label: 'After', body: 'One workspace where the worklist stays visible on the side, alongside the clinical summary, CDS chat, and care plan generation.' },
               { label: 'Why it matters', body: 'The coordinator can move between patients and tasks without losing context, which is the core of their day.' },
             ],
+            video: mp4('flow-2.mp4'),
             image: { src: '', placeholder: 'FLOW 02 · Patient Detail' },
           },
           {
@@ -161,6 +163,7 @@ export const projectsData = [
               { label: 'Action-first for critical cases', body: 'For the highest-acuity patients, the chat surfaces clear next actions inline so the coordinator does not have to read through a wall of text.' },
               { label: 'Clinical evidence as chips', body: "The supporting reasoning behind every AI recommendation shows up as clinical evidence chips. Clicking a chip opens the underlying summary in place, so the coordinator can verify without leaving the chat." },
             ],
+            video: mp4('flow-3.mp4'),
             image: { src: '', placeholder: 'FLOW 03 · CDS Chat' },
           },
           {
@@ -172,6 +175,7 @@ export const projectsData = [
               { label: 'After', body: 'A stepper shows where the coordinator is in the flow, separates AI suggestions (always with cited evidence) from the clinician action, and confirms the plan reached the right people via Epic In Basket and the patient portal.' },
               { label: 'Authorship', body: 'The AI proposes with citations, and the clinician always holds the final action. That distinction is the design.' },
             ],
+            video: mp4('flow-4.mp4'),
             image: { src: '', placeholder: 'FLOW 04 · 5-Step Care Plan' },
           },
         ],
@@ -186,23 +190,23 @@ export const projectsData = [
         items: [
           {
             icon: 'shield',
-            title: 'Five hard-stop safety checks',
-            body: "Before any care plan can be sent, five clinical checks have to pass: Hgb threshold, contraindications, allergies, recent transfusion, and order conflicts. There is no override option, and whichever check is blocking is always named on screen so the coordinator knows exactly what stopped them.",
+            title: 'Five clinical checks must pass before any care plan is sent.',
+            body: 'Hgb threshold, contraindications, allergies, recent transfusion, and order conflicts. The blocking check is named on screen, no override.',
           },
           {
             icon: 'gauge',
-            title: 'Confidence shown, not buried',
-            body: "Every AI recommendation displays its confidence score right next to the cited guideline, instead of hiding it in a tooltip. Low-confidence cases still generate a suggestion, but they surface a 'review needed' flag rather than blocking the coordinator from working.",
+            title: 'AI confidence is shown next to every recommendation.',
+            body: "Low-confidence cases still generate, but surface a 'review needed' flag instead of blocking the coordinator.",
           },
           {
             icon: 'book',
-            title: 'Two-click evidence trail',
-            body: "Each AI recommendation links to its source, whether that is an ASH guideline, an hc1-curated protocol, or a peer-reviewed study. The coordinator can verify the reasoning behind any suggestion in two clicks, without leaving the CDS chat.",
+            title: 'Every suggestion links to its source in two clicks.',
+            body: 'ASH guidelines, hc1 protocols, or peer-reviewed studies. All accessible without leaving the CDS chat.',
           },
           {
             icon: 'refresh',
-            title: 'No memory between sessions',
-            body: "Every CDS chat session loads fresh against the latest patient state in Epic. The AI never carries a previous decision forward, so the coordinator always sees what is true about the patient right now.",
+            title: 'Each session loads fresh against the current patient state.',
+            body: 'The AI never carries a previous decision forward, so the coordinator always sees what is true right now.',
           },
         ],
       },
@@ -216,25 +220,25 @@ export const projectsData = [
             label: 'Vision',
             title: 'Bolt + SMEs',
             content: 'Translated clinical knowledge and business framing into a directional vision for the all-hands.',
-            image: { src: '', placeholder: 'STEP 01 · Bolt vision artefact' },
+            image: { src: '/step-1.png', placeholder: 'STEP 01 · Bolt vision artefact' },
           },
           {
             label: 'Prototype',
             title: 'Claude · interactive prototype',
             content: 'Vision + hc1 design system into Claude. Designer-driven prompts. Output went into review.',
-            image: { src: '', placeholder: 'STEP 02 · Interactive prototype' },
+            image: { src: '/step-2.png', placeholder: 'STEP 02 · Interactive prototype' },
           },
           {
             label: 'Tokenized code',
             title: 'Claude Code · production-ready',
             content: 'Design tokens in JSON + CLAUDE.md rules. Plan signed off before any code was written.',
-            image: { src: '', placeholder: 'STEP 03 · Tokenized front-end plan' },
+            image: { src: '/step-3.png', placeholder: 'STEP 03 · Tokenized front-end plan' },
           },
           {
             label: 'Ship',
             title: 'Engineering · MVP',
             content: 'Approved plan to front-end. Debugged by engineers. UI signed off by me. Shipped.',
-            image: { src: '', placeholder: 'STEP 04 · Shipped MVP' },
+            image: { src: '/step-4.png', placeholder: 'STEP 04 · Shipped MVP' },
           },
         ],
         insight:
@@ -262,8 +266,8 @@ export const projectsData = [
           },
           {
             icon: 'book',
-            title: 'Watch the workflow before designing for it.',
-            body: "Shadowing care coordinators through an actual anemia clinic shift surfaced edge cases that no spec or interview would have caught, like the multi-agent overlap on pregnant pre-surgical patients. Hours on the floor saved months of corrections after release.",
+            title: 'Without field time, you inherit other people\'s assumptions.',
+            body: "We didn't have direct access to care coordinators in the field on this project, so the workflow was built on SMEs' framing of the day-to-day. Edge cases like the multi-agent overlap only surfaced in later reviews.",
           },
         ],
       },
@@ -515,6 +519,7 @@ export const projectsData = [
   {
     id: 'dcc',
     label: 'Showcase 3',
+    comingSoon: true,
     title: 'Shipping self-serve data control to 100% of hc1 customers.',
     accentPhrase: 'self-serve data control',
     handwriting: '100%',
