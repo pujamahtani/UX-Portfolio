@@ -32,7 +32,7 @@
 .pw-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 36px 20px;
+  gap: 64px 32px;
   font-family: var(--font-sans);
 }
 
