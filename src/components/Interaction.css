@@ -84,7 +84,7 @@
   background: linear-gradient(120deg, #A78BFA, #3B82F6, #EC4899, #8B5CF6);
   background-size: 300% 300%;
   animation: fluidGlow 15s ease infinite;
-  filter: blur(20px) saturate(1.5);
+  filter: blur(8px);
   transform: scale(1.1);
 }
 

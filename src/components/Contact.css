@@ -1,4 +1,16 @@
 /* ── Contact Section ── */
+@keyframes footerRock {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+  80% { transform: rotate(-3deg); }
+}
+
+.footer-illustration--rock {
+  animation: footerRock 2.4s ease-in-out infinite;
+  animation-delay: 1.2s;
+  transform-origin: bottom center;
+}
 #contact {
   background: transparent;
   text-align: center;

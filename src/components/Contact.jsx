@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import './Contact.css';
 import userIllustration from '../assets/user_illustration.png';
 
@@ -9,12 +8,10 @@ const Contact = () => {
       <div className="footer-wrap" id="contact">
         <footer className="footer-grid">
           <div className="footer-left">
-            <motion.img
+            <img
               src={userIllustration}
               alt="Puja Mahtani illustration"
-              className="footer-illustration"
-              animate={{ rotate: [0, -6, 0, 6, 0] }}
-              transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut', repeatDelay: 1.2 }}
+              className="footer-illustration footer-illustration--rock"
             />
             <div className="footer-copy">
               <svg className="footer-circle" viewBox="0 0 760 200" preserveAspectRatio="none" aria-hidden="true">

@@ -1,25 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import './Cursor.css';
 
 const Cursor = () => {
-  const [position, setPosition] = useState({ x: -100, y: -100 });
+  // useMotionValue + useSpring update WITHOUT triggering React re-renders.
+  // Framer Motion subscribes to them directly and writes to the DOM each frame.
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+  const springX = useSpring(mouseX, { stiffness: 1200, damping: 40, mass: 0.1 });
+  const springY = useSpring(mouseY, { stiffness: 1200, damping: 40, mass: 0.1 });
+
+  const [isVisible, setIsVisible] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   const [cursorText, setCursorText] = useState('');
-  const [isVisible, setIsVisible] = useState(true);
   const [inHero, setInHero] = useState(false);
   const inHeroRef = useRef(false);
 
   useEffect(() => {
     const updatePosition = (e) => {
-      setPosition({ x: e.clientX, y: e.clientY });
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
       setIsVisible(true);
     };
 
     const handleMouseOver = (e) => {
       const target = e.target;
 
-      // Hero detection via event delegation — works even after loader unmounts
       const nowInHero = !!target.closest('#hero');
       if (nowInHero !== inHeroRef.current) {
         inHeroRef.current = nowInHero;
@@ -61,14 +67,12 @@ const Cursor = () => {
       document.removeEventListener('mouseleave', handleMouseLeave);
       document.removeEventListener('mouseenter', handleMouseEnter);
     };
-  }, []);
-
+  }, [mouseX, mouseY]);
 
   return (
     <motion.div
       className={`figma-cursor ${isHovered ? 'figma-cursor--hover' : ''}`}
-      animate={{ x: position.x, y: position.y, opacity: isVisible ? 1 : 0 }}
-      transition={{ type: 'spring', stiffness: 1200, damping: 40, mass: 0.1 }}
+      style={{ x: springX, y: springY, opacity: isVisible ? 1 : 0 }}
     >
       {inHero && !cursorText ? (
         <svg

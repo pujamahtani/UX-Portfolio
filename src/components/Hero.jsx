@@ -92,7 +92,7 @@ const Hero = () => {
         whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, delay: 1 }}
         drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
       >
-        <div className="music-cover" onClick={handleTogglePlay} style={{ width: '56px', height: '56px', borderRadius: '10px', backgroundImage: `url(${songCover})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'pointer', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <div className="music-cover" onClick={handleTogglePlay} style={{ width: '56px', height: '56px', borderRadius: '10px', backgroundImage: `url(${songCover})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           {isPlaying ? (
              <svg viewBox="0 0 24 24" width="24" height="24" fill="#fff"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
           ) : (
@@ -163,7 +163,7 @@ const Hero = () => {
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                style={{ pointerEvents: 'auto', cursor: 'pointer', transformOrigin: 'bottom center' }}
+                style={{ pointerEvents: 'none', cursor: 'none', transformOrigin: 'bottom center' }}
               />
             </div>
           </div>

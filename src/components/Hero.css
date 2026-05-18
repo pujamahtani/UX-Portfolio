@@ -29,7 +29,7 @@
   color: #111;
   box-shadow: 2px 8px 24px rgba(0,0,0,0.08);
   pointer-events: auto;
-  cursor: pointer !important;
+  cursor: none;
   z-index: 5;
   display: flex;
   align-items: center;

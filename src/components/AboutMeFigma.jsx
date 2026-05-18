@@ -117,7 +117,7 @@ const AboutMeFigma = () => {
                       }}
                       transition={{ type: 'spring', stiffness: 260, damping: 28 }}
                       whileDrag={{ scale: 1.04 }}
-                      style={{ cursor: isTop ? 'grab' : 'default', zIndex: total - offset, opacity: 1 }}
+                      style={{ cursor: 'none', zIndex: total - offset, opacity: 1 }}
                     >
                       {card.fit === 'contain' && (
                         <img src={card.src} alt="" aria-hidden="true" className="amf-card-bg" draggable="false" />

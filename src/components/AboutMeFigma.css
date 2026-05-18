@@ -123,7 +123,6 @@
   pointer-events: none;
   image-rendering: -webkit-optimize-contrast;
   image-rendering: high-quality;
-  filter: contrast(1.06) saturate(1.12);
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -133,7 +132,6 @@
   position: relative;
   object-fit: contain;
   z-index: 2;
-  filter: contrast(1.04) saturate(1.08);
 }
 
 .amf-card-bg {
