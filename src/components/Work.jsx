@@ -21,16 +21,11 @@ const Work = () => {
   const handleClinicalEnter = playRef(clinicalVideoRef);
   const handleClinicalLeave = pauseRef(clinicalVideoRef);
 
-  const containerVars = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.18 } },
-  };
-
   const cardVars = {
-    hidden: { opacity: 0, y: 80, filter: 'blur(8px)' },
+    hidden: { opacity: 0, y: 60, filter: 'blur(6px)' },
     visible: {
       opacity: 1, y: 0, filter: 'blur(0px)',
-      transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
     },
   };
 
@@ -62,10 +57,10 @@ const Work = () => {
           </h2>
         </motion.div>
 
-        <motion.div className="pw-grid" initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-10%' }} variants={containerVars}>
+        <div className="pw-grid">
 
           {/* Card 1: ClinicalIQ */}
-          <motion.div className="pw-card-wrap wide" variants={cardVars}>
+          <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
             <span className="pw-figma-label">Showcase 1: BloodHealth Copilot</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
@@ -99,7 +94,7 @@ const Work = () => {
           </motion.div>
 
           {/* Card 2: Showcase 2 — Workforce Optimization */}
-          <motion.div className="pw-card-wrap wide" variants={cardVars}>
+          <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
             <span className="pw-figma-label">Showcase 2: hc1 Workforce Optimization</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
@@ -133,7 +128,7 @@ const Work = () => {
           </motion.div>
 
           {/* Card 3: Showcase 3 — Data Control Center */}
-          <motion.div className="pw-card-wrap wide" variants={cardVars}>
+          <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
             <span className="pw-figma-label">Showcase 3: Data Control Center</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
@@ -167,7 +162,7 @@ const Work = () => {
             </a>
           </motion.div>
 
-        </motion.div>
+        </div>
       </div>
     </section>
   );
