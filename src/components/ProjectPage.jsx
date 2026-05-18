@@ -457,7 +457,7 @@ const ProjectPage = ({ projectId }) => {
       {/* Topbar with back link */}
       <div className="pp-topbar">
         <a href="/" onClick={goHome} className="pp-back-link">← Home</a>
-        <a href="/resume.docx" download className="pp-resume-cta">View Resume ↗</a>
+        <a href="https://docs.google.com/document/d/1QOFd9BHDNnL05IARe75YOyYZ5BcfVVWp/preview" target="_blank" rel="noopener noreferrer" className="pp-resume-cta">View Resume ↗</a>
       </div>
 
       {/* ── HERO ── */}
