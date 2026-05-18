@@ -3357,6 +3357,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--pp-teal);
+  white-space: nowrap;
 }
 
 .pp-dflow-decision-text {
