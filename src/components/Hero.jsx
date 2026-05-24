@@ -7,7 +7,7 @@ import { useAudio } from '../AudioContext';
 
 const Hero = () => {
   const constraintsRef = useRef(null);
-  const [clickNote, setClickNote] = useState({ visible: true, x: '5%', y: '30%' });
+  const [clickNote, setClickNote] = useState({ visible: true, x: '32%', y: '74%' });
   const { isPlaying, togglePlay } = useAudio();
 
   const lineVariant = {
