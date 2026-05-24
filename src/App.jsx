@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 import './index.css';
 import './App.css';
 
@@ -111,6 +112,7 @@ function App() {
         )}
       </AnimatePresence>
     </div>
+      <Analytics />
     </AudioProvider>
   );
 }
