@@ -139,14 +139,16 @@ const Work = () => {
             <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Self-serve data control that saved <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">$10K/yr</span></span> in vendor costs.
+                  Self-serve data control that cut customer activation time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
                 </h3>
                 <div className="pw-card-tags">
                   <span>Solo UX Designer</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
                 </div>
               </div>
-              <div className="pw-card-right slate-light browser-side">
-                <div className="browser-frame">
+              <div className="pw-card-right dcc-hero-right">
+                <div className="dcc-hero-bg" style={{ backgroundImage: 'url(/Hero-Image-DCC.png)' }} />
+                <div className="dcc-hero-scrim" />
+                <div className="browser-frame dcc-modal-frame">
                   <div className="browser-chrome">
                     <span className="browser-dot red" />
                     <span className="browser-dot yellow" />
@@ -154,7 +156,7 @@ const Work = () => {
                     <div className="browser-url">datacontrolcenter.hc1.com</div>
                   </div>
                   <div className="browser-body">
-                    <img src="/dcc-background.webp" alt="Data Control Center" className="browser-img" />
+                    <img src="/dcc-modal.webp" alt="Data Control Center" className="browser-img" />
                   </div>
                 </div>
               </div>
