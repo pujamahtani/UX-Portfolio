@@ -3994,7 +3994,7 @@
 .pp-brief-metrics {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 0;
   border-top: none;
 }
 
