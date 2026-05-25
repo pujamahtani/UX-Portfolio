@@ -782,42 +782,28 @@
   object-position: top center;
 }
 
-/* ── DCC Card — hero image bg + dark scrim + floating modal ── */
-.pw-card.slate-card .pw-card-right.dcc-hero-right {
+/* ── DCC Card — background + overlay + modal layered inside browser body ── */
+.dcc-browser-body {
   position: relative;
-  overflow: hidden;
-  padding: 0;
-  background: #111;
-  flex: 1;
 }
 
-.dcc-hero-bg {
+.dcc-body-overlay {
   position: absolute;
   inset: 0;
-  background-size: cover;
-  background-position: center top;
-  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.pw-card:hover .dcc-hero-bg {
-  transform: scale(1.05);
-}
-
-.dcc-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.22) 100%);
+  background: rgba(0, 0, 0, 0.48);
   z-index: 1;
 }
 
-.dcc-modal-frame {
+.dcc-modal-img {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 76%;
   z-index: 2;
-  border-radius: 12px 0 0 0;
-  box-shadow: 0 -4px 32px rgba(0,0,0,0.5), 0 16px 48px rgba(0,0,0,0.4);
+  width: 66%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.55);
+  display: block;
 }
 
 

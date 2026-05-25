@@ -145,18 +145,18 @@ const Work = () => {
                   <span>Solo UX Designer</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
                 </div>
               </div>
-              <div className="pw-card-right dcc-hero-right">
-                <div className="dcc-hero-bg" style={{ backgroundImage: 'url(/dcc-background.webp)' }} />
-                <div className="dcc-hero-scrim" />
-                <div className="browser-frame dcc-modal-frame">
+              <div className="pw-card-right slate-light browser-side">
+                <div className="browser-frame">
                   <div className="browser-chrome">
                     <span className="browser-dot red" />
                     <span className="browser-dot yellow" />
                     <span className="browser-dot green" />
                     <div className="browser-url">datacontrolcenter.hc1.com</div>
                   </div>
-                  <div className="browser-body">
-                    <img src="/dcc-modal.webp" alt="Data Control Center" className="browser-img" />
+                  <div className="browser-body dcc-browser-body">
+                    <img src="/dcc-background.webp" alt="Data Control Center" className="browser-img" />
+                    <div className="dcc-body-overlay" />
+                    <img src="/dcc-modal.webp" alt="DCC modal" className="dcc-modal-img" />
                   </div>
                 </div>
               </div>
