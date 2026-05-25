@@ -84,7 +84,6 @@ const Navbar = () => {
               )}
             </AnimatePresence>
           </div>
-          <a href="/about" className="nav-link" onClick={(e) => handleNavClick(e, '/about')}>About</a>
           <a href="/#contact" className="nav-link" onClick={(e) => handleNavClick(e, '/#contact')}>Contact</a>
         </div>
 

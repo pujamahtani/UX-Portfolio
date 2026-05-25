@@ -18,27 +18,23 @@ const Loader = ({ onComplete }) => {
   const [phase, setPhase] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+    const delay = (ms) => new Promise(r => setTimeout(r, ms));
     // Sequence of our Figma drawing animation
     const sequence = async () => {
-      // Small delay before frame pops in
-      await new Promise(r => setTimeout(r, 300));
+      await delay(300);  if (cancelled) return;
       setPhase(1); // Frame appears small (e.g. mobile size)
-      
-      await new Promise(r => setTimeout(r, 400));
+      await delay(400);  if (cancelled) return;
       setPhase(2); // Frame width expands (tablet size)
-      
-      await new Promise(r => setTimeout(r, 400));
+      await delay(400);  if (cancelled) return;
       setPhase(3); // Frame height scales down (simulating adjustment)
-      
-      await new Promise(r => setTimeout(r, 400));
+      await delay(400);  if (cancelled) return;
       setPhase(4); // Full expansion out of bounds (zooming into the frame)
-      
-      // Extremely short delay so we immediately show Hero page once frame fills screen
-      await new Promise(r => setTimeout(r, 200));
+      await delay(200);  if (cancelled) return;
       onComplete(); // Done, unmounts Loader
     };
-    
     sequence();
+    return () => { cancelled = true; };
   }, [onComplete]);
 
   // Dimension tracking based on phase

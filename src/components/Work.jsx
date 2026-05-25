@@ -136,7 +136,7 @@ const Work = () => {
             <span className="pw-frame-handle br" />
             <span className="pw-frame-handle ml" />
             <span className="pw-frame-handle mr" />
-            <div className="pw-card wide slate-card" data-cursor="Coming Soon">
+            <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
                   Self-serve data control that saved <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">$10K/yr</span></span> in vendor costs.
@@ -158,7 +158,7 @@ const Work = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </motion.div>
 
         </div>

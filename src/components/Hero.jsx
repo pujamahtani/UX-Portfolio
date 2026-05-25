@@ -81,7 +81,7 @@ const Hero = () => {
             drag dragConstraints={constraintsRef}
             whileDrag={{ scale: 1.1, zIndex: 20 }}
           >
-            4+ years of experience being an exceptional designer 🤓
+            1px off. I will find it. 🫠
           </motion.div>
         )}
       </AnimatePresence>
@@ -140,7 +140,7 @@ const Hero = () => {
       <motion.div className="selection-wrap" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.7 }}>
         <div className="resizable-box" data-cursor="Hi, I am Puja Mahtani">
           <div className="sel-box"></div>
-          <div className="sel-label">Puja Mahtani / Available for work</div>
+          <div className="sel-label">Puja Mahtani / Available for full-time roles</div>
           <div className="sel-handle sh-tl"></div>
           <div className="sel-handle sh-tr"></div>
           <div className="sel-handle sh-bl"></div>
@@ -171,7 +171,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.p className="hero-sub" initial="hidden" animate="visible" custom={1.0} variants={fadeUpVariant} style={{ maxWidth: '640px' }}>
-        My versatile experience across AI, enterprise & data heavy products gives me an end to end view of design from early concept to long term Impact. I find my superpower in high-fidelity prototyping and using it to bring clarity to the messy space between vision and shipped product.
+        My versatile experience across AI, enterprise & data heavy products gives me an end to end view of design from early concept to long term impact. I find my superpower in high-fidelity prototyping and using it to bring clarity to the messy space between vision and shipped product.
       </motion.p>
 
       <motion.div className="hero-btns" initial="hidden" animate="visible" custom={1.15} variants={fadeUpVariant}>

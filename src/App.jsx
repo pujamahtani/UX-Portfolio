@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import './index.css';
@@ -8,7 +8,6 @@ import { AudioProvider } from './AudioContext';
 import Loader from './components/Loader';
 import Cursor from './components/Cursor';
 import Hero from './components/Hero';
-import About from './components/About';
 import Work from './components/Work';
 import AboutMeFigma from './components/AboutMeFigma';
 import Testimonials from './components/Testimonials';
@@ -17,7 +16,8 @@ import ProjectPage from './components/ProjectPage';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(window.location.pathname);
-  const [isAppLoading, setIsAppLoading] = useState(true);
+  // Skip the Loader intro in dev; it only plays in the production build
+  const [isAppLoading, setIsAppLoading] = useState(import.meta.env.PROD);
 
   useEffect(() => {
     // Handle page navigation
@@ -45,6 +45,8 @@ function App() {
     exit: { opacity: 0, y: -15, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }
   };
 
+  const handleLoadComplete = useCallback(() => setIsAppLoading(false), []);
+
   return (
     <AudioProvider>
     <div className="portfolio-app">
@@ -55,7 +57,7 @@ function App() {
       
       <AnimatePresence mode="wait">
         {isAppLoading ? (
-          <Loader key="loader" onComplete={() => setIsAppLoading(false)} />
+          <Loader key="loader" onComplete={handleLoadComplete} />
         ) : (
           <motion.div key="main-app" className="app-content-wrapper" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4 }}>
 
@@ -77,20 +79,7 @@ function App() {
                 </motion.main>
               )}
 
-              {/* About Page - Separate Route */}
-              {currentPage === '/about' && (
-                <motion.main 
-                  key="about" 
-                  id="about-page"
-                  variants={pageVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                >
-                  <About />
-                  <Contact />
-                </motion.main>
-              )}
+
 
               {/* Project Pages - Dynamic Routes */}
               {currentPage.startsWith('/project/') && (

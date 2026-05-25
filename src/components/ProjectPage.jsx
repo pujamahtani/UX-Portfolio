@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import './ProjectPage.css';
 import { projectsData } from '../data/projects';
 
@@ -13,7 +14,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
 
-const VideoArtifact = ({ src }) => {
+const VideoArtifact = ({ src, onOpen }) => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(true);
   const toggle = () => {
@@ -36,11 +37,22 @@ const VideoArtifact = ({ src }) => {
           </svg>
         )}
       </button>
+      {onOpen && (
+        <button
+          className="pp-media-expand-btn"
+          onClick={e => { e.stopPropagation(); onOpen({ type: 'video', src }); }}
+          aria-label="View fullscreen"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+          </svg>
+        </button>
+      )}
     </div>
   );
 };
 
-const ResearchFindingsSection = ({ section }) => {
+const ResearchFindingsSection = ({ section, onOpen }) => {
   const [activeIdx, setActiveIdx] = useState(0);
   const itemRefs = useRef([]);
 
@@ -101,7 +113,13 @@ const ResearchFindingsSection = ({ section }) => {
               {section.findings?.map((f, i) => (
                 <div key={i} className={`pp-rf-img-layer ${activeIdx === i ? 'pp-rf-img-active' : ''}`}>
                   {f.image
-                    ? <img src={f.image} alt={f.headline} className="pp-rf-img" />
+                    ? <img
+                        src={f.image}
+                        alt={f.headline}
+                        className="pp-rf-img pp-artifact-zoomable"
+                        onClick={() => onOpen?.({ type: 'image', src: f.image, caption: f.headline })}
+                        title="Click to expand"
+                      />
                     : <div className="pp-rf-img-placeholder"><span>{f.number}</span></div>
                   }
                 </div>
@@ -120,7 +138,7 @@ const ResearchFindingsSection = ({ section }) => {
   );
 };
 
-const WorkflowSection = ({ section }) => {
+const WorkflowSection = ({ section, onOpen }) => {
   const [activeIdx, setActiveIdx] = useState(0);
   const itemRefs = useRef([]);
 
@@ -178,7 +196,7 @@ const WorkflowSection = ({ section }) => {
           <div className="pp-wfsplit-art-frame">
             {stages.map((stage, i) => (
               <div key={i} className={`pp-wfsplit-art-layer ${activeIdx === i ? 'pp-wfsplit-art-active' : ''}`}>
-                <ArtifactSlot artifact={stage.image} aspect="16 / 9" />
+                <ArtifactSlot artifact={stage.image} aspect="16 / 9" onOpen={onOpen} />
               </div>
             ))}
             <div className="pp-wfsplit-art-counter">{activeIdx + 1} / {stages.length}</div>
@@ -377,11 +395,16 @@ const FlowDiagram = ({ data }) => {
   );
 };
 
-const ArtifactSlot = ({ artifact, aspect = '16 / 10', className = '' }) => {
+const ArtifactSlot = ({ artifact, aspect = '16 / 10', className = '', onOpen }) => {
   if (!artifact) return null;
   if (artifact.kind === 'video' && artifact.src) {
     return (
-      <figure className={`pp-artifact pp-artifact-video ${className}`} style={{ aspectRatio: aspect }}>
+      <figure
+        className={`pp-artifact pp-artifact-video pp-artifact-zoomable ${className}`}
+        style={{ aspectRatio: aspect }}
+        onClick={() => onOpen?.({ type: 'video', src: artifact.src, caption: artifact.caption })}
+        title="Click to expand"
+      >
         <video src={artifact.src} muted loop autoPlay playsInline className="pp-artifact-media" />
         {artifact.caption && <figcaption className="pp-artifact-caption">{artifact.caption}</figcaption>}
       </figure>
@@ -389,7 +412,12 @@ const ArtifactSlot = ({ artifact, aspect = '16 / 10', className = '' }) => {
   }
   if (artifact.src) {
     return (
-      <figure className={`pp-artifact ${className}`} style={{ aspectRatio: aspect }}>
+      <figure
+        className={`pp-artifact pp-artifact-zoomable ${className}`}
+        style={{ aspectRatio: aspect }}
+        onClick={() => onOpen?.({ type: 'image', src: artifact.src, caption: artifact.caption })}
+        title="Click to expand"
+      >
         <img src={artifact.src} alt={artifact.caption || ''} className="pp-artifact-media" />
         {artifact.caption && <figcaption className="pp-artifact-caption">{artifact.caption}</figcaption>}
       </figure>
@@ -413,10 +441,39 @@ const ProjectPage = ({ projectId }) => {
   const prevProject = showcaseIndex > 0 ? showcases[showcaseIndex - 1] : null;
   const nextProject = showcaseIndex !== -1 && showcaseIndex < showcases.length - 1 ? showcases[showcaseIndex + 1] : null;
   const rootRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [showBackToTop, setShowBackToTop] = useState(false);
+  const [lightboxItem, setLightboxItem] = useState(null);
+  const openLightbox = (item) => setLightboxItem(item);
+  const closeLightbox = () => setLightboxItem(null);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [projectId]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+      setShowBackToTop(scrollTop > 400);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    setScrollProgress(0);
+    setShowBackToTop(false);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [projectId]);
+
+  useEffect(() => {
+    if (!lightboxItem) return;
+    const onKey = (e) => { if (e.key === 'Escape') closeLightbox(); };
+    document.addEventListener('keydown', onKey);
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = '';
+    };
+  }, [lightboxItem]);
 
   useEffect(() => {
     if (!project || !rootRef.current) return;
@@ -425,6 +482,8 @@ const ProjectPage = ({ projectId }) => {
     root.style.setProperty('--pp-accent-alt', project.accentAlt || '#FF9E8B');
     root.style.setProperty('--pp-gradient', project.gradient || 'linear-gradient(135deg, #FF7262 0%, #FFCD29 100%)');
     root.style.setProperty('--pp-gradient-soft', project.gradientSoft || 'linear-gradient(135deg, rgba(255,114,98,0.16) 0%, rgba(255,205,41,0.16) 100%)');
+    root.style.setProperty('--pp-solution-gradient', project.solutionGradient || 'linear-gradient(145deg, rgba(245,129,38,0.10) 0%, #ffffff 52%, rgba(23,79,98,0.05) 100%)');
+    root.style.setProperty('--pp-solution-accent', project.solutionAccent || project.accent || '#F58126');
     root.style.setProperty('--pp-deep', project.deep || '#1A3D52');
     // Per-project override of warm-accent tokens used across the case study.
     // Defaults stay as the site-wide orange so other projects are unaffected.
@@ -451,6 +510,29 @@ const ProjectPage = ({ projectId }) => {
 
   return (
     <article id="project-page" className="pp" ref={rootRef}>
+      {/* Scroll progress bar */}
+      <div
+        className="pp-progress-bar"
+        style={{ width: `${scrollProgress}%`, background: project?.accent || '#F58126' }}
+        aria-hidden="true"
+      />
+
+      {/* Back to top button */}
+      {projectId !== 'dcc' && (
+        <motion.button
+          className="pp-back-to-top"
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          animate={{ opacity: showBackToTop ? 1 : 0, y: showBackToTop ? 0 : 10, pointerEvents: showBackToTop ? 'auto' : 'none' }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+          aria-label="Back to top"
+          style={{ color: project?.accent || '#F58126' }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+            <path d="M18 15l-6-6-6 6"/>
+          </svg>
+        </motion.button>
+      )}
+
       {/* Gradient ambient wash */}
       <div className="pp-ambient" aria-hidden="true" />
 
@@ -467,19 +549,22 @@ const ProjectPage = ({ projectId }) => {
         animate="visible"
         variants={stagger}
       >
-        {project.label && (
-          <motion.div className="pp-kicker" variants={fadeUp}>
-            {project.label} <span className="pp-kicker-dot">·</span> {project.shortTitle}
-          </motion.div>
-        )}
 
         <motion.h1 className="pp-hero-title" variants={fadeUp}>
           {renderTitleWithAccents(project.title, project.accentPhrase, project.handwriting)}
         </motion.h1>
 
         {project.demoVideo && (
-          <motion.div className="pp-demo-video-wrap" variants={fadeUp}>
+          <motion.div className="pp-demo-video-wrap pp-media-expandable" variants={fadeUp} onClick={() => openLightbox({ type: 'video', src: project.demoVideo, caption: project.shortTitle })} title="Click to view fullscreen">
             <video src={project.demoVideo} muted loop autoPlay playsInline className="pp-demo-video" />
+            <span className="pp-media-expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg> Fullscreen</span>
+          </motion.div>
+        )}
+
+        {!project.demoVideo && project.heroImage && (
+          <motion.div className="pp-demo-video-wrap pp-media-expandable" variants={fadeUp} onClick={() => openLightbox({ type: 'image', src: project.heroImage, caption: project.shortTitle })} title="Click to view fullscreen">
+            <img src={project.heroImage} alt={project.shortTitle} className="pp-demo-video" style={{ objectFit: 'cover' }} />
+            <span className="pp-media-expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg> Fullscreen</span>
           </motion.div>
         )}
 
@@ -494,9 +579,23 @@ const ProjectPage = ({ projectId }) => {
                 )}
                 {roleSection && (
                   <div className="pp-role-lead">
-                    <div className="pp-kicker pp-section-kicker">{roleSection.kicker}</div>
-                    <h2 className="pp-role-lead-title">{roleSection.title}</h2>
+                    <h2 className="pp-role-lead-title">Roles &amp; Responsibilities.</h2>
                     {roleSection.intro && <p className="pp-role-lead-text">{roleSection.intro}</p>}
+                  </div>
+                )}
+                {roleSection?.items?.length > 0 && (
+                  <div className="pp-role-inline" style={{ marginTop: 20 }}>
+                    <div className="pp-role-items">
+                      {roleSection.items.map((item) => (
+                        <div key={item.number} className="pp-role-item">
+                          <span className="pp-role-num">{item.number}</span>
+                          <div className="pp-role-body">
+                            <h3>{item.title}</h3>
+                            <p>{item.body}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -514,34 +613,16 @@ const ProjectPage = ({ projectId }) => {
           );
         })()}
 
-        {/* ── ROLE NUMBERED ITEMS — what I did, how ── */}
-        {(() => {
-          const roleSection = project.sections?.find(s => s.type === 'role');
-          if (!roleSection?.items?.length) return null;
-          return (
-            <motion.div className="pp-role-inline" variants={fadeUp}>
-              <div className="pp-role-items">
-                {roleSection.items.map((item) => (
-                  <div key={item.number} className="pp-role-item">
-                    <span className="pp-role-num">{item.number}</span>
-                    <div className="pp-role-body">
-                      <h3>{item.title}</h3>
-                      <p>{item.body}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          );
-        })()}
-
         {project.heroVideo && (
           <motion.figure
-            className="pp-hero-artifact pp-artifact-video"
+            className="pp-hero-artifact pp-artifact-video pp-media-expandable"
             variants={fadeUp}
             style={{ aspectRatio: '16 / 10' }}
+            onClick={() => openLightbox({ type: 'video', src: project.heroVideo, caption: project.shortTitle })}
+            title="Click to view fullscreen"
           >
             <video src={project.heroVideo} muted loop autoPlay playsInline className="pp-artifact-media" />
+            <span className="pp-media-expand-hint"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg> Fullscreen</span>
           </motion.figure>
         )}
       </motion.header>
@@ -730,7 +811,7 @@ const ProjectPage = ({ projectId }) => {
 
               {section.artifact && (
                 <motion.div variants={fadeUp}>
-                  <ArtifactSlot artifact={section.artifact} aspect="16 / 9" />
+                  <ArtifactSlot artifact={section.artifact} aspect="16 / 9" onOpen={openLightbox} />
                 </motion.div>
               )}
             </motion.section>
@@ -823,7 +904,7 @@ const ProjectPage = ({ projectId }) => {
               viewport={{ once: true, margin: '-12%' }}
               variants={stagger}
             >
-              {section.kicker && <motion.div className="pp-kicker pp-section-kicker" variants={fadeUp}>{section.kicker}</motion.div>}
+              {section.kicker && <motion.div className="pp-kicker pp-section-kicker" style={{ color: project?.accent }} variants={fadeUp}>{section.kicker}</motion.div>}
               {section.question && (
                 <motion.h2 className="pp-question" variants={fadeUp}>
                   {section.question}
@@ -856,7 +937,7 @@ const ProjectPage = ({ projectId }) => {
 
               {section.artifact && (
                 <motion.div variants={fadeUp}>
-                  <ArtifactSlot artifact={section.artifact} aspect="16 / 9" />
+                  <ArtifactSlot artifact={section.artifact} aspect="16 / 9" onOpen={openLightbox} />
                 </motion.div>
               )}
             </motion.section>
@@ -994,10 +1075,10 @@ const ProjectPage = ({ projectId }) => {
                     </header>
                     {flow.video ? (
                       <div className="pp-flow-art pp-flow-art-video">
-                        <VideoArtifact src={flow.video} />
+                        <VideoArtifact src={flow.video} onOpen={openLightbox} />
                       </div>
                     ) : (
-                      <ArtifactSlot artifact={flow.image} aspect="16 / 9" className="pp-flow-art" />
+                      <ArtifactSlot artifact={flow.image} aspect="16 / 9" className="pp-flow-art" onOpen={openLightbox} />
                     )}
                   </motion.div>
                 ))}
@@ -1007,7 +1088,7 @@ const ProjectPage = ({ projectId }) => {
         }
 
         if (section.type === 'workflow') {
-          return <WorkflowSection key={idx} section={section} />;
+          return <WorkflowSection key={idx} section={section} onOpen={openLightbox} />;
         }
 
         if (section.type === 'testimonial') {
@@ -1071,8 +1152,12 @@ const ProjectPage = ({ projectId }) => {
               {/* Solution */}
               {section.solution && (
                 <motion.div className="pp-brief-solution-block" variants={fadeUp}>
-                  <div className="pp-brief-label">The Solution</div>
-                  <p className="pp-brief-solution">{section.solution}</p>
+                  <div className="pp-solution-shell">
+                    <div className="pp-solution-card">
+                      <span className="pp-solution-badge">✦ The Solution</span>
+                      <p className="pp-solution-text">{section.solution}</p>
+                    </div>
+                  </div>
                 </motion.div>
               )}
 
@@ -1083,12 +1168,17 @@ const ProjectPage = ({ projectId }) => {
                   <div className="pp-brief-metrics">
                     {section.metrics.map((m) => (
                       <div key={m.label} className="pp-brief-metric">
-                        <span className="pp-brief-metric-val">{m.value}</span>
-                        <span className="pp-brief-metric-dir">{m.direction === 'down' ? 'reduction' : 'improvement'}</span>
                         <span className="pp-brief-metric-label">{m.label}</span>
+                        <span className="pp-brief-metric-val">
+                          <span className="pp-brief-metric-arrow" aria-hidden="true">{m.direction === 'down' ? '↓' : '↑'}</span>
+                          {m.value}
+                        </span>
                       </div>
                     ))}
                   </div>
+                  {section.metricsNote && (
+                    <p className="pp-brief-metrics-note">{section.metricsNote}</p>
+                  )}
                 </motion.div>
               )}
             </motion.section>
@@ -1096,7 +1186,7 @@ const ProjectPage = ({ projectId }) => {
         }
 
         if (section.type === 'research-findings') {
-          return <ResearchFindingsSection key={idx} section={section} />;
+          return <ResearchFindingsSection key={idx} section={section} onOpen={openLightbox} />;
         }
 
         if (section.type === 'reflections') {
@@ -1106,7 +1196,7 @@ const ProjectPage = ({ projectId }) => {
               {section.title && <motion.h2 className="pp-section-title" variants={fadeUp}>{section.title}</motion.h2>}
               {section.media?.src && (
                 <motion.figure className="pp-reflections-media" variants={fadeUp}>
-                  <img src={section.media.src} alt={section.media.alt || ''} loading="lazy" />
+                  <img src={section.media.src} alt={section.media.alt || ''} loading="lazy" className="pp-artifact-zoomable" onClick={() => openLightbox({ type: 'image', src: section.media.src, caption: section.media.caption || section.media.alt })} title="Click to expand" />
                   {section.media.caption && (
                     <figcaption className="pp-reflections-media-caption">{section.media.caption}</figcaption>
                   )}
@@ -1272,9 +1362,9 @@ const ProjectPage = ({ projectId }) => {
                     {(flow.video || (flow.image && flow.image.src)) && (
                       <div className="pp-dflow-artifact">
                         {flow.video ? (
-                          <VideoArtifact src={flow.video} />
+                          <VideoArtifact src={flow.video} onOpen={openLightbox} />
                         ) : (
-                          <img src={flow.image.src} alt={flow.title} className="pp-dflow-img" />
+                          <img src={flow.image.src} alt={flow.title} className="pp-dflow-img pp-artifact-zoomable" onClick={() => openLightbox({ type: 'image', src: flow.image.src, caption: flow.title })} title="Click to expand" />
                         )}
                       </div>
                     )}
@@ -1304,8 +1394,9 @@ const ProjectPage = ({ projectId }) => {
               variants={fadeUp}
               role="link"
               aria-disabled="true"
-              title="Coming soon"
             >
+              {prevProject.heroImage && <div className="pp-prevnext-bg" style={{ backgroundImage: `url(${prevProject.heroImage})` }} />}
+              <div className="pp-prevnext-scrim" />
               <span className="pp-prevnext-dir">← Previous</span>
               <span className="pp-prevnext-title">{prevProject.shortTitle}</span>
               <span className="pp-prevnext-soon">Coming soon</span>
@@ -1321,6 +1412,8 @@ const ProjectPage = ({ projectId }) => {
               className="pp-prevnext-link pp-prevnext-prev"
               variants={fadeUp}
             >
+              {prevProject.heroImage && <div className="pp-prevnext-bg" style={{ backgroundImage: `url(${prevProject.heroImage})` }} />}
+              <div className="pp-prevnext-scrim" />
               <span className="pp-prevnext-dir">← Previous</span>
               <span className="pp-prevnext-title">{prevProject.shortTitle}</span>
             </motion.a>
@@ -1335,8 +1428,9 @@ const ProjectPage = ({ projectId }) => {
               variants={fadeUp}
               role="link"
               aria-disabled="true"
-              title="Coming soon"
             >
+              {nextProject.heroImage && <div className="pp-prevnext-bg" style={{ backgroundImage: `url(${nextProject.heroImage})` }} />}
+              <div className="pp-prevnext-scrim" />
               <span className="pp-prevnext-dir">Next →</span>
               <span className="pp-prevnext-title">{nextProject.shortTitle}</span>
               <span className="pp-prevnext-soon">Coming soon</span>
@@ -1352,6 +1446,8 @@ const ProjectPage = ({ projectId }) => {
               className="pp-prevnext-link pp-prevnext-next"
               variants={fadeUp}
             >
+              {nextProject.heroImage && <div className="pp-prevnext-bg" style={{ backgroundImage: `url(${nextProject.heroImage})` }} />}
+              <div className="pp-prevnext-scrim" />
               <span className="pp-prevnext-dir">Next →</span>
               <span className="pp-prevnext-title">{nextProject.shortTitle}</span>
             </motion.a>
@@ -1360,6 +1456,57 @@ const ProjectPage = ({ projectId }) => {
           <span className="pp-prevnext-empty pp-prevnext-next" aria-hidden="true" />
         )}
       </motion.nav>
+
+      {/* ── LIGHTBOX ── */}
+      {createPortal(
+        <AnimatePresence>
+          {lightboxItem && (
+            <motion.div
+              className="pp-lightbox-overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={closeLightbox}
+            >
+              <motion.div
+                className="pp-lightbox-content"
+                initial={{ scale: 0.94, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.94, opacity: 0 }}
+                transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button className="pp-lightbox-close" onClick={closeLightbox} aria-label="Close">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" width="18" height="18">
+                    <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                  </svg>
+                </button>
+                {lightboxItem.type === 'video' ? (
+                  <video
+                    key={lightboxItem.src}
+                    src={lightboxItem.src}
+                    className="pp-lightbox-media"
+                    controls
+                    autoPlay
+                    playsInline
+                  />
+                ) : (
+                  <img
+                    src={lightboxItem.src}
+                    alt={lightboxItem.caption || ''}
+                    className="pp-lightbox-media"
+                  />
+                )}
+                {lightboxItem.caption && (
+                  <p className="pp-lightbox-caption">{lightboxItem.caption}</p>
+                )}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
 
       {/* ── FOOTER NAV ── */}
       <motion.footer
