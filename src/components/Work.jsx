@@ -146,7 +146,7 @@ const Work = () => {
                 </div>
               </div>
               <div className="pw-card-right dcc-hero-right">
-                <div className="dcc-hero-bg" style={{ backgroundImage: 'url(/Hero-Image-DCC.png)' }} />
+                <div className="dcc-hero-bg" style={{ backgroundImage: 'url(/dcc-background.webp)' }} />
                 <div className="dcc-hero-scrim" />
                 <div className="browser-frame dcc-modal-frame">
                   <div className="browser-chrome">
