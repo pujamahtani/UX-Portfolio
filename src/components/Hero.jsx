@@ -81,7 +81,7 @@ const Hero = () => {
             drag dragConstraints={constraintsRef}
             whileDrag={{ scale: 1.1, zIndex: 20 }}
           >
-            1px off. I will find it. 🫠
+            1px off, and I'll find it. 🫠
           </motion.div>
         )}
       </AnimatePresence>
