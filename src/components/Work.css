@@ -773,6 +773,15 @@
   transform: scale(1.04);
 }
 
+/* ClinicalIQ video — contain so full width is never cropped */
+.clinical-browser-body {
+  background: #f4f5f7;
+}
+.clinical-browser-body .browser-img {
+  object-fit: contain;
+  object-position: top center;
+}
+
 /* ── DCC Card — hero image bg + dark scrim + floating modal ── */
 .pw-card.slate-card .pw-card-right.dcc-hero-right {
   position: relative;
