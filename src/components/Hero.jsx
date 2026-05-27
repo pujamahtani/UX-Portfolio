@@ -179,7 +179,7 @@ const Hero = () => {
           e.preventDefault();
           document.getElementById('about-home')?.scrollIntoView({ behavior: 'smooth' });
         }}>Know me</a>
-        <a href="https://docs.google.com/document/d/1QOFd9BHDNnL05IARe75YOyYZ5BcfVVWp/preview" target="_blank" rel="noopener noreferrer" className="btn-p">View Resume</a>
+        <a href="/Puja_Mahtani_Resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-p">View Resume</a>
       </motion.div>
 
     </motion.section>
