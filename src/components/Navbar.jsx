@@ -89,7 +89,7 @@ const Navbar = () => {
 
         {/* CTA Section */}
         <div className="nav-cta-container">
-          <a href="/puja-mahtani-resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-cta">Resume</a>
+          <a href="/Puja_Mahtani_Resume.pdf" target="_blank" rel="noopener noreferrer" className="nav-cta">Resume</a>
         </div>
       </div>
     </motion.nav>
