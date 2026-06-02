@@ -43,7 +43,7 @@ const Contact = () => {
               </svg>
             </a>
             <a
-              href="/Puja_Mahtani_Resume.pdf"
+              href="/puja-mahtani-resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="footer-link"
