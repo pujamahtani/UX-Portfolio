@@ -151,8 +151,8 @@ const Hero = () => {
           <div className="hero-content-flex">
             <h1 className="hero-h1" style={{ textAlign: 'left' }}>
               <span className="line"><motion.span className="line-inner" custom={0} variants={lineVariant} initial="hidden" animate="visible">Designer who</motion.span></span>
-              <span className="line"><motion.span className="line-inner hero-accent" custom={1} variants={lineVariant} initial="hidden" animate="visible"><span>thrives in</span></motion.span></span>
-              <span className="line"><motion.span className="line-inner" custom={2} variants={lineVariant} initial="hidden" animate="visible"><span className="hero-handwriting">ambiguity</span>.</motion.span></span>
+              <span className="line"><motion.span className="line-inner hero-accent" custom={1} variants={lineVariant} initial="hidden" animate="visible"><span>builds what</span></motion.span></span>
+              <span className="line"><motion.span className="line-inner" custom={2} variants={lineVariant} initial="hidden" animate="visible"><span className="hero-handwriting">she designs</span>.</motion.span></span>
             </h1>
 
             <div style={{ position: 'relative', display: 'inline-block' }}>
@@ -171,7 +171,7 @@ const Hero = () => {
       </motion.div>
 
       <motion.p className="hero-sub" initial="hidden" animate="visible" custom={1.0} variants={fadeUpVariant} style={{ maxWidth: '640px' }}>
-        My versatile experience across AI, enterprise & data heavy products gives me an end to end view of design from early concept to long term impact. I find my superpower in high-fidelity prototyping and using it to bring clarity to the messy space between vision and shipped product.
+        I design how products feel and own how they function, end-to-end. Fast-moving, adaptable, and focused on design that's measurable and deliberate.
       </motion.p>
 
       <motion.div className="hero-btns" initial="hidden" animate="visible" custom={1.15} variants={fadeUpVariant}>

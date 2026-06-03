@@ -42,7 +42,7 @@ const Work = () => {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-10%' }} variants={cardVars}>
           <h2 className="pw-title" style={{ margin: 0, marginBottom: '56px', textAlign: 'left' }}>
             <span className="pw-title-circled">
-              Some of my recent projects include:
+              Design work I'm proud to talk through.
               <svg className="pw-title-circle" viewBox="0 0 800 140" preserveAspectRatio="none" aria-hidden="true">
                 <path
                   d="M 22 78 C 70 30, 240 12, 470 18 C 640 24, 780 44, 778 78 C 776 110, 600 128, 380 124 C 180 120, 24 108, 30 80 C 36 60, 110 44, 240 38"
@@ -142,7 +142,7 @@ const Work = () => {
                   Self-serve data control that cut customer activation time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
                 </h3>
                 <div className="pw-card-tags">
-                  <span>Solo UX Designer</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
+                  <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
                 </div>
               </div>
               <div className="pw-card-right slate-light browser-side">

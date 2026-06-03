@@ -356,9 +356,8 @@ export const projectsData = [
         ],
         solution: 'A real-time staffing dashboard that connects timekeeping and lab volume, surfaces predictive recommendations with transparent reasoning, and tracks long-term financial and operational impact.',
         metrics: [
-          { value: '~17%', label: 'Labor cost reduction', direction: 'down' },
-          { value: '~31%', label: 'Operational efficiency improvement', direction: 'up' },
-          { value: '~22%', label: 'Productivity increase within 6 months', direction: 'up' },
+          { value: '18%', label: 'Labor cost reduction', direction: 'down' },
+          { value: '34%', label: 'Efficiency gain within 6 months', direction: 'up' },
         ],
         metricsNote: 'Outcomes measured 6 months post-launch with pilot customer cohort.',
       },

@@ -18,12 +18,12 @@ const BIO_TABS = {
     label: 'Weekday',
     paragraphs: [
       {
-        intro: 'I like to bring together design, strategy, and curiosity.',
-        rest: " With roots in design and over 4 years across AI and enterprise products, I've spent the last few years shaping experiences that thrive in ambiguity and dive deep into the business side of things.",
+        intro: 'I bring together design, strategy, and a genuine curiosity for how complex systems work.',
+        rest: " With 4+ years across AI, enterprise, and data-heavy products, I've learned that the best design isn't the prettiest. It's the one that earns trust and actually works for the people depending on it.",
       },
       {
-        intro: 'Complex problem spaces have been my learning ground,',
-        rest: ' each one teaching me something new about how systems operate and how intuitive interaction can bring clarity. My work blends an eye for craft with a drive to improve outcomes.',
+        intro: 'My sweet spot is the messy middle.',
+        rest: ' The space between a hard business problem and a shipped product, where clarity is hard-won and the stakes are real. I work end-to-end, from early discovery through delivery, and I care as much about the outcome as I do about the craft.',
       },
     ],
   },
