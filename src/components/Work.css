@@ -747,6 +747,10 @@
   padding: 4px 14px;
   border-radius: 6px;
   border: 1px solid #DCDCDC;
+}
+
+.browser-url:empty {
+  display: none;
   max-width: 60%;
   text-align: center;
   white-space: nowrap;
