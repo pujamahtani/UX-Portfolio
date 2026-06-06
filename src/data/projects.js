@@ -261,22 +261,22 @@ export const projectsData = [
         items: [
           {
             icon: 'users',
-            title: 'Clinical design is built on agreement, not approval.',
+            title: 'High-stakes systems are built on agreement, not approval.',
             body: 'In clinical products, every design decision is also a clinical one. Bringing SMEs into the design conversation from the start, instead of treating them as reviewers at the end, turned weekly debates into weekly sign-offs and shaved weeks of rework off every release.',
           },
           {
             icon: 'shield',
-            title: 'Make AI reasoning visible at the point of action.',
-            body: "Clinicians do not act on what they cannot verify. Surfacing the cited guideline, the confidence score, and the underlying evidence next to every AI recommendation turned a black-box suggestion into a decision a coordinator could defend.",
+            title: 'Make AI reasoning verifiable at the point of action.',
+            body: "Clinicians won't act on automated recommendations they cannot fully verify. Surfacing a dedicated evidence-citation panel alongside clear data-completeness indicators turns a black-box suggestion into an audit-ready, highly trusted decision.",
           },
           {
             icon: 'gauge',
-            title: 'AI sharpens design thinking, it does not replace it.',
-            body: "Working with Claude throughout this project taught me that the bottleneck is no longer execution speed. It is clarity of intent. A vague prompt produces a clean-looking mess, while a precise one produces a shippable surface.",
+            title: 'AI accelerates execution, but demands clarity of intent.',
+            body: "Integrating AI code tools into my prototyping pipeline proved that front-end execution speed is no longer the primary product bottleneck. The real differentiator is engineering intent; a vague layout prompt creates a clean-looking mess, while precise systemic logic delivers production-ready interfaces.",
           },
           {
             icon: 'book',
-            title: 'Without field time, you inherit other people\'s assumptions.',
+            title: 'Without direct user context, you inherit proxy assumptions.',
             body: "We didn't have direct access to care coordinators in the field on this project, so the workflow was built on SMEs' framing of the day-to-day. Edge cases like the multi-agent overlap only surfaced in later reviews.",
           },
         ],
