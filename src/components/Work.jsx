@@ -105,12 +105,11 @@ const Work = () => {
             <a href="/project/wfo" onClick={(e) => handleProjectClick(e, 'wfo')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Predictive staffing platform: Lifting operational efficiency by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">34%</span>.</span>
+                  Predictive staffing platform: Lifting operational efficiency <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">34%</span>.</span>
                 </h3>
                 <div className="pw-card-tags">
-                  <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span>
+                  <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span><span className="pw-shipped-chip">MVP Shipped</span>
                 </div>
-                <span className="pw-shipped-chip">MVP Shipped</span>
               </div>
               <div className="pw-card-right slate-light browser-side">
                 <div className="browser-frame">
@@ -140,12 +139,11 @@ const Work = () => {
             <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Self-serve data onboarding: Cutting customer activation time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
+                  Self-serve data onboarding: Cutting customer activation time <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">48%</span>.</span>
                 </h3>
                 <div className="pw-card-tags">
-                  <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
+                  <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span><span className="pw-shipped-chip">MVP Shipped</span>
                 </div>
-                <span className="pw-shipped-chip">MVP Shipped</span>
               </div>
               <div className="pw-card-right slate-light browser-side">
                 <div className="browser-frame">
