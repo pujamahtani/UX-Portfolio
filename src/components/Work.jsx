@@ -61,7 +61,7 @@ const Work = () => {
 
           {/* Card 1: ClinicalIQ */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 1: Anemia Management Platform</span>
+            <span className="pw-figma-label">Showcase 1: AI-Driven Decision Support</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
@@ -71,7 +71,7 @@ const Work = () => {
             <a href="/project/clinicaliq" onClick={(e) => handleProjectClick(e, 'clinicaliq')} onMouseEnter={handleClinicalEnter} onMouseLeave={handleClinicalLeave} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Designing AI-Powered Anemia Management That Cuts Transfusion Risk by <span className="handwriting-accent">40%</span>
+                  AI Decision Support for Complex Workflows: Cutting Critical Operational Risks by <span className="handwriting-accent">40%</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Strategy</span><span>Interactive Prototype</span><span>AI Workflow</span>
