@@ -300,7 +300,7 @@ export const projectsData = [
     accentPhrase: 'Predictive Staffing Platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',
-    description: 'hc1 identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
+    description: 'Our organization identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
     demoVideo: mp4('wfo-demo.mp4'),
     color: '#F58126',
     accent: '#F58126',
