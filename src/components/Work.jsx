@@ -61,7 +61,7 @@ const Work = () => {
 
           {/* Card 1: ClinicalIQ */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 1: EMR Embedded Platform</span>
+            <span className="pw-figma-label">Showcase 1: Integrated Workflow Engine</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
