@@ -50,7 +50,7 @@ export const projectsData = [
           {
             number: '01',
             title: 'Built the AI design-to-code workflow',
-            body: 'A reusable pipeline from product vision to production-ready front-end, fast enough to test with clinicians.',
+            body: 'A reusable pipeline bridging product vision and production code, optimized to rapidly validate complex automated workflows with stakeholders.',
           },
           {
             number: '02',
