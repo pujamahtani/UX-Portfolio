@@ -71,7 +71,7 @@ const Work = () => {
             <a href="/project/clinicaliq" onClick={(e) => handleProjectClick(e, 'clinicaliq')} onMouseEnter={handleClinicalEnter} onMouseLeave={handleClinicalLeave} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  AI decision support: Cutting operational risk by <span className="handwriting-accent">40%</span>
+                  AI Decision Support: Cutting Operational Risk by <span className="handwriting-accent">40%</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Strategy</span><span>Interactive Prototype</span><span>AI Workflow</span>
@@ -105,7 +105,7 @@ const Work = () => {
             <a href="/project/wfo" onClick={(e) => handleProjectClick(e, 'wfo')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Predictive staffing platform: Lifting operational efficiency <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">34%</span>.</span>
+                  Predictive Staffing Platform: Lifting Operational Efficiency <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">34%</span></span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span><span className="pw-shipped-chip">MVP Shipped</span>
@@ -139,7 +139,7 @@ const Work = () => {
             <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Self-serve data onboarding: Cutting customer activation time <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">48%</span>.</span>
+                  Self-Serve Data Onboarding: Cutting Customer Activation Time <span style={{ whiteSpace: 'nowrap' }}>by <span className="handwriting-accent">48%</span></span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span><span className="pw-shipped-chip">MVP Shipped</span>
