@@ -296,7 +296,7 @@ export const projectsData = [
   {
     id: 'wfo',
     label: 'Showcase 2',
-    title: 'A predictive staffing platform: lifting operational efficiency by 34%.',
+    title: 'Predictive staffing platform: Lifting operational efficiency by 34%.',
     accentPhrase: 'predictive staffing platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',

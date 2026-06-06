@@ -105,7 +105,7 @@ const Work = () => {
             <a href="/project/wfo" onClick={(e) => handleProjectClick(e, 'wfo')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  A predictive staffing platform: lifting operational efficiency by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">34%</span>.</span>
+                  Predictive staffing platform: Lifting operational efficiency by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">34%</span>.</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span>
