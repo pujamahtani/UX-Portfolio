@@ -71,7 +71,7 @@ const Work = () => {
             <a href="/project/clinicaliq" onClick={(e) => handleProjectClick(e, 'clinicaliq')} onMouseEnter={handleClinicalEnter} onMouseLeave={handleClinicalLeave} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  AI Decision Support: Cutting Operational Risk by <span className="handwriting-accent">40%</span>
+                  AI decision support: Cutting operational risk by <span className="handwriting-accent">40%</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Strategy</span><span>Interactive Prototype</span><span>AI Workflow</span>
@@ -140,7 +140,7 @@ const Work = () => {
             <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Self-Serve Data Onboarding: Cutting Customer Activation Time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
+                  Self-serve data onboarding: Cutting customer activation time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
                 </h3>
                 <div className="pw-card-tags">
                   <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
