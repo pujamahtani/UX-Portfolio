@@ -45,7 +45,7 @@ export const projectsData = [
         type: 'role',
         kicker: 'My Role',
         title: 'AI Product Designer',
-        intro: 'Sole designer on an AI-first clinical product, owning everything from the AI pipeline architecture to high-fidelity prototyping inside Epic, working directly with clinicians, engineers, and product leaders.',
+        intro: 'Led product strategy and core interaction design for a real-time AI decision layer inside Epic, partnering directly with software engineers, data architects, and subject matter experts to take the platform from concept to an MVP workspace.',
         items: [
           {
             number: '01',
