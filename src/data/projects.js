@@ -20,7 +20,7 @@ export const projectsData = [
     accentPhrase: 'AI Decision Support',
     handwriting: '40%',
     shortTitle: 'Anemia Management',
-    description: 'AI clinical decision support embedded inside Epic for care coordinators managing high-risk anemia patients.',
+    description: 'An in-workflow decision support engine integrated into Epic Hyperspace, built to help care teams prioritize complex, high-risk operational anomalies in real time.',
     color: '#1E6C50',
     accent: '#1E6C50',
     accentAlt: '#174F62',
