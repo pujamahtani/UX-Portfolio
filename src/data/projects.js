@@ -16,7 +16,7 @@ export const projectsData = [
   {
     id: 'clinicaliq',
     label: 'Showcase 1',
-    title: 'AI Decision Support: Cutting Operational Risk by 40%',
+    title: 'AI decision support: Cutting operational risk by 40%',
     accentPhrase: 'AI Decision Support',
     handwriting: '40%',
     shortTitle: 'Anemia Management',
@@ -296,7 +296,7 @@ export const projectsData = [
   {
     id: 'wfo',
     label: 'Showcase 2',
-    title: 'A Predictive Staffing Platform: Lifting Operational Efficiency by 34%.',
+    title: 'A predictive staffing platform: Lifting operational efficiency by 34%.',
     accentPhrase: 'Predictive Staffing Platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',
@@ -533,7 +533,7 @@ export const projectsData = [
   {
     id: 'dcc',
     label: 'Showcase 3',
-    title: 'Self-Serve Data Onboarding: Cutting Customer Activation Time by 48%.',
+    title: 'Self-serve data onboarding: Cutting customer activation time by 48%.',
     accentPhrase: 'Customer Activation Time by',
     handwriting: '48%',
     shortTitle: 'Data Control Center',
