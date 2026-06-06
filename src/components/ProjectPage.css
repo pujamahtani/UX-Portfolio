@@ -319,11 +319,12 @@
 .pp-hero-title {
   margin: 0 0 28px;
   font-family: var(--font-sans);
-  font-size: clamp(40px, 6vw, 68px);
+  font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 1.04;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
   color: var(--text);
+  max-width: 720px;
 }
 
 .pp-accent { color: var(--text); }

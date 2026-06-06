@@ -16,8 +16,8 @@ export const projectsData = [
   {
     id: 'clinicaliq',
     label: 'Showcase 1',
-    title: 'AI decision support: Cutting operational risk by 40%',
-    accentPhrase: 'AI decision support',
+    title: 'AI Decision Support: Cutting Operational Risk by 40%',
+    accentPhrase: 'AI Decision Support',
     handwriting: '40%',
     shortTitle: 'Anemia Management',
     description: 'AI clinical decision support embedded inside Epic for care coordinators managing high-risk anemia patients.',
@@ -296,8 +296,8 @@ export const projectsData = [
   {
     id: 'wfo',
     label: 'Showcase 2',
-    title: 'Predictive staffing platform: Lifting operational efficiency by 34%.',
-    accentPhrase: 'Predictive staffing platform',
+    title: 'Predictive Staffing Platform: Lifting Operational Efficiency by 34%',
+    accentPhrase: 'Predictive Staffing Platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',
     description: 'hc1 identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
@@ -533,8 +533,8 @@ export const projectsData = [
   {
     id: 'dcc',
     label: 'Showcase 3',
-    title: 'Self-serve data onboarding: Cutting customer activation time by 48%.',
-    accentPhrase: 'customer activation time by',
+    title: 'Self-Serve Data Onboarding: Cutting Customer Activation Time by 48%',
+    accentPhrase: 'Customer Activation Time by',
     handwriting: '48%',
     shortTitle: 'Data Control Center',
     description: 'A customer-facing platform replacing two legacy hc1 tools, helping customers self-serve imports and exports between their systems and the company\'s data warehouse. Automatic field mapping and preliminary syntax checks catch formatting errors before the import runs, and a live log captures every run with row-level error detail.',
