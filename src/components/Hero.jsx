@@ -151,8 +151,8 @@ const Hero = () => {
           <div className="hero-content-flex">
             <h1 className="hero-h1" style={{ textAlign: 'left' }}>
               <span className="line"><motion.span className="line-inner" custom={0} variants={lineVariant} initial="hidden" animate="visible">Shaping</motion.span></span>
-              <span className="line"><motion.span className="line-inner" custom={1} variants={lineVariant} initial="hidden" animate="visible"><span className="hero-handwriting">clarity</span> out of</motion.span></span>
-              <span className="line"><motion.span className="line-inner" custom={2} variants={lineVariant} initial="hidden" animate="visible"><span className="hero-handwriting">chaos</span>.</motion.span></span>
+              <span className="line"><motion.span className="line-inner" custom={1} variants={lineVariant} initial="hidden" animate="visible"><span className="hero-handwriting">clarity</span> out</motion.span></span>
+              <span className="line"><motion.span className="line-inner" custom={2} variants={lineVariant} initial="hidden" animate="visible">of <span className="hero-handwriting">chaos</span>.</motion.span></span>
             </h1>
 
             <div style={{ position: 'relative', display: 'inline-block' }}>
