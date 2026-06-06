@@ -207,8 +207,8 @@
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: 100px;
-  background: #1BC47D;
-  color: #fff;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--muted);
 }
 
 /* ── Right media area ── */
