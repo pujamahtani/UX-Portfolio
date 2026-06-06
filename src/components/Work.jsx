@@ -71,7 +71,7 @@ const Work = () => {
             <a href="/project/clinicaliq" onClick={(e) => handleProjectClick(e, 'clinicaliq')} onMouseEnter={handleClinicalEnter} onMouseLeave={handleClinicalLeave} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  AI Decision Support for Complex Workflows: Cutting Critical Operational Risks by <span className="handwriting-accent">40%</span>
+                  AI Decision Support: Cutting Operational Risk by <span className="handwriting-accent">40%</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Strategy</span><span>Interactive Prototype</span><span>AI Workflow</span>

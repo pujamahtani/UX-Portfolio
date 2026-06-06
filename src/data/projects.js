@@ -16,7 +16,7 @@ export const projectsData = [
   {
     id: 'clinicaliq',
     label: 'Showcase 1',
-    title: 'AI Decision Support for Complex Workflows: Cutting Critical Operational Risks by 40%',
+    title: 'AI Decision Support: Cutting Operational Risk by 40%',
     accentPhrase: 'AI Decision Support',
     handwriting: '40%',
     shortTitle: 'Anemia Management',
