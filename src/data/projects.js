@@ -297,7 +297,7 @@ export const projectsData = [
     id: 'wfo',
     label: 'Showcase 2',
     title: 'Predictive staffing platform: Lifting operational efficiency by 34%.',
-    accentPhrase: 'predictive staffing platform',
+    accentPhrase: 'Predictive staffing platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',
     description: 'hc1 identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
