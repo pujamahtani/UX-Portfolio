@@ -110,6 +110,7 @@ const Work = () => {
                 <div className="pw-card-tags">
                   <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span>
                 </div>
+                <span className="pw-shipped-chip">MVP Shipped</span>
               </div>
               <div className="pw-card-right slate-light browser-side">
                 <div className="browser-frame">
@@ -144,6 +145,7 @@ const Work = () => {
                 <div className="pw-card-tags">
                   <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
                 </div>
+                <span className="pw-shipped-chip">MVP Shipped</span>
               </div>
               <div className="pw-card-right slate-light browser-side">
                 <div className="browser-frame">

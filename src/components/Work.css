@@ -196,6 +196,20 @@
   color: var(--muted);
 }
 
+.pw-shipped-chip {
+  display: inline-block;
+  margin-top: 16px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  background: #1BC47D;
+  color: #fff;
+}
+
 /* ── Right media area ── */
 .pw-card-right {
   flex: 1;
