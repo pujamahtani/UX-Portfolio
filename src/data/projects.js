@@ -16,8 +16,8 @@ export const projectsData = [
   {
     id: 'clinicaliq',
     label: 'Showcase 1',
-    title: 'AI-Powered Anemia Management That Cuts Transfusion Risk by 40%',
-    accentPhrase: 'AI-Powered Anemia Management',
+    title: 'AI Decision Support for Complex Workflows: Cutting Critical Operational Risks by 40%',
+    accentPhrase: 'AI Decision Support',
     handwriting: '40%',
     shortTitle: 'Anemia Management',
     description: 'AI clinical decision support embedded inside Epic for care coordinators managing high-risk anemia patients.',
@@ -296,8 +296,8 @@ export const projectsData = [
   {
     id: 'wfo',
     label: 'Showcase 2',
-    title: 'Predictive staffing that lifts lab efficiency by 34%.',
-    accentPhrase: 'Predictive staffing',
+    title: 'A Predictive Staffing Platform: Lifting Operational Efficiency by 34%.',
+    accentPhrase: 'Predictive Staffing Platform',
     handwriting: '34%',
     shortTitle: 'Workforce Optimization',
     description: 'hc1 identified a critical gap: no product meaningfully connected lab staffing data with clinical volume to give lab leaders a real-time view of staffing efficiency. I was brought in as the sole designer to close it, taking this product from concept to a shipped MVP and owning every layer of the design process from discovery through developer handoff.',
@@ -315,7 +315,7 @@ export const projectsData = [
     heroImage: '/wfo-dashboard.webp',
     tags: ['UX Research', 'Systems Thinking', 'Data Visualization'],
     meta: {
-      timeline: 'Apr 12 – Nov 20, 2024',
+      timeline: 'Apr 12 – Nov 20, 2024 (MVP Shipped)',
       team: '1 PM · 2 Data Engineers · 3 Engineers · 1 UX Designer',
       methods: 'Stakeholder Interviews · Design Workshops · Personas · Rapid Prototyping · Usability Testing',
       platform: 'Web · Desktop SaaS',
@@ -533,8 +533,8 @@ export const projectsData = [
   {
     id: 'dcc',
     label: 'Showcase 3',
-    title: 'Self-serve data control that cut customer activation time by 48%.',
-    accentPhrase: 'customer activation time by',
+    title: 'Self-Serve Data Onboarding: Cutting Customer Activation Time by 48%.',
+    accentPhrase: 'Customer Activation Time by',
     handwriting: '48%',
     shortTitle: 'Data Control Center',
     description: 'A customer-facing platform replacing two legacy hc1 tools, helping customers self-serve imports and exports between their systems and the company\'s data warehouse. Automatic field mapping and preliminary syntax checks catch formatting errors before the import runs, and a live log captures every run with row-level error detail.',
@@ -550,7 +550,7 @@ export const projectsData = [
     tags: ['Self-Serve SaaS', 'Build vs. Buy', 'Stakeholder Research'],
     meta: {
       role: 'Solo Product Designer',
-      timeline: 'Q1 – Q3 2023',
+      timeline: 'Q1 – Q3 2023 (MVP Shipped)',
       team: '1 PM · 2 Engineers · 2 Service Delivery · 1 Designer',
       methods: 'Stakeholder Interviews · Competitive Analysis · Problem Framing · Rapid Prototyping · Usability Testing',
       platform: 'Web · Desktop SaaS',
