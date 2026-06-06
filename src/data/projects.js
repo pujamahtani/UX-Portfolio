@@ -55,12 +55,12 @@ export const projectsData = [
           {
             number: '02',
             title: 'Drove cross-team alignment',
-            body: 'Design bridge between product, SMEs, and engineering on every clinical and architectural call.',
+            body: 'Design bridge between product leadership, technical SMEs, and engineering on every core system and data architecture call.',
           },
           {
             number: '03',
             title: 'Owned visual, component & AI specs',
-            body: 'Visual + component design, plus the AI markdown files the team re-runs on every new module.',
+            body: 'Visual + component specifications, AI markdown files that engineers re-run on every new module.',
           },
         ],
       },
