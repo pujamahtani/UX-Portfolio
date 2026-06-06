@@ -36,7 +36,7 @@ export const projectsData = [
     meta: {
       role: 'Solo Product Designer',
       team: '2 Product leaders · 2 SMEs · 1 Designer · 4 Engineers',
-      timeline: 'Q1 – Q4 2026 (Projected)',
+      timeline: 'Q1 – Q4 2026 (In production)',
       tools: 'Claude AI & Code · Figma · FigJam · Bolt',
       platform: 'Epic Hyperspace',
     },
