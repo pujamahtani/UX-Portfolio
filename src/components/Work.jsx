@@ -95,7 +95,7 @@ const Work = () => {
 
           {/* Card 2: Showcase 2 — Workforce Optimization */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 2: hc1 Workforce Optimization</span>
+            <span className="pw-figma-label">Showcase 2: Predictive Workforce Optimization</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
@@ -105,7 +105,7 @@ const Work = () => {
             <a href="/project/wfo" onClick={(e) => handleProjectClick(e, 'wfo')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Predictive staffing that lifts lab efficiency by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">34%</span>.</span>
+                  A predictive staffing platform: lifting operational efficiency by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">34%</span>.</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>UX Research</span><span>Systems Thinking</span><span>Data Visualization</span>
