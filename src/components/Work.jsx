@@ -139,7 +139,7 @@ const Work = () => {
             <a href="/project/dcc" onClick={(e) => handleProjectClick(e, 'dcc')} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  Self-serve data control that cut customer activation time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
+                  Self-Serve Data Onboarding: Cutting Customer Activation Time by <span style={{ whiteSpace: 'nowrap' }}><span className="handwriting-accent">48%</span></span>.
                 </h3>
                 <div className="pw-card-tags">
                   <span>Build vs. Buy</span><span>Stakeholder Research</span><span>IA &amp; Prototyping</span>
