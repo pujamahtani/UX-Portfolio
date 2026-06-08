@@ -170,8 +170,9 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      <motion.p className="hero-sub" initial="hidden" animate="visible" custom={1.0} variants={fadeUpVariant} style={{ maxWidth: '640px' }}>
-        I design how products feel and own how they function, end-to-end. Fast-moving, adaptable, and focused on design that's measurable and deliberate.
+      <motion.p className="hero-sub" initial="hidden" animate="visible" custom={1.0} variants={fadeUpVariant} style={{ maxWidth: '760px' }}>
+        I design how products feel and own how they function, end-to-end.<br />
+        Fast-moving, adaptable, and focused on design that's measurable and deliberate.
       </motion.p>
 
       <motion.div className="hero-btns" initial="hidden" animate="visible" custom={1.15} variants={fadeUpVariant}>

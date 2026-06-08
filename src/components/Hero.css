@@ -63,8 +63,9 @@
 .hero-content-flex {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
   position: relative;
   z-index: 2;
   margin-top: 10px;
@@ -113,16 +114,16 @@
 .resizable-box {
   resize: both;
   overflow: auto;
-  min-width: 320px;
+  min-width: 760px;
   min-height: 150px;
-  padding: 10px;
+  padding: 16px 0;
 }
 .resizable-box::-webkit-resizer {
   background: transparent;
 }
 .sel-box {
   position: absolute;
-  inset: -14px;
+  inset: -14px -30px;
   border: 1.5px solid var(--blue);
   border-radius: 3px;
   pointer-events: none;
@@ -146,12 +147,12 @@
   border: 1.5px solid var(--blue);
   border-radius: 1px;
 }
-.sh-tl { top: -17px; left: -17px; }
-.sh-tr { top: -17px; right: -17px; }
-.sh-bl { bottom: -17px; left: -17px; }
-.sh-br { bottom: -17px; right: -17px; }
-.sh-ml { top: 50%; left: -17px; transform: translateY(-50%); }
-.sh-mr { top: 50%; right: -17px; transform: translateY(-50%); }
+.sh-tl { top: -17px; left: -33px; }
+.sh-tr { top: -17px; right: -33px; }
+.sh-bl { bottom: -17px; left: -33px; }
+.sh-br { bottom: -17px; right: -33px; }
+.sh-ml { top: 50%; left: -33px; transform: translateY(-50%); }
+.sh-mr { top: 50%; right: -33px; transform: translateY(-50%); }
 
 .hero-h1 {
   font-size: clamp(48px, 8vw, 88px);
@@ -183,10 +184,10 @@
 }
 
 .hero-sub {
-  font-size: clamp(16px, 2vw, 18px);
-  color: var(--muted2);
+  font-size: 20px;
+  color: #444444;
   font-weight: 500;
-  max-width: 520px;
+  max-width: 760px;
   line-height: 1.6;
   margin-bottom: 36px;
 }
@@ -362,9 +363,12 @@
   }
 
   .hero-sub {
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     padding: 0 8px;
+  }
+  .hero-sub br {
+    display: none;
   }
 
   .hero-btns {
@@ -379,7 +383,14 @@
 
   .resizable-box {
     width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px !important;
   }
+  .sel-box {
+    inset: -14px !important;
+  }
+  .sh-tl, .sh-bl, .sh-ml { left: -17px !important; }
+  .sh-tr, .sh-br, .sh-mr { right: -17px !important; }
 
   /* Hide draggable sticky notes on mobile — they overflow/overlap */
   .sticky-note {
