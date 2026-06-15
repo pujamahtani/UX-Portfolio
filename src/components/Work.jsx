@@ -4,6 +4,7 @@ import './Work.css';
 
 const Work = () => {
   const clinicalVideoRef = useRef(null);
+  const whisperVideoRef = useRef(null);
 
   const playRef = (ref) => () => {
     const v = ref.current;
@@ -20,6 +21,8 @@ const Work = () => {
 
   const handleClinicalEnter = playRef(clinicalVideoRef);
   const handleClinicalLeave = pauseRef(clinicalVideoRef);
+  const handleWhisperEnter = playRef(whisperVideoRef);
+  const handleWhisperLeave = pauseRef(whisperVideoRef);
 
   const cardVars = {
     hidden: { opacity: 0, y: 40 },
@@ -157,6 +160,59 @@ const Work = () => {
                     <img src="/dcc-background.webp" alt="Data Control Center" className="browser-img" />
                     <div className="dcc-body-overlay" />
                     <img src="/dcc-modal.webp" alt="DCC modal" className="dcc-modal-img" />
+                  </div>
+                </div>
+              </div>
+            </a>
+          </motion.div>
+
+          {/* Card 4: Showcase 4 — Whisper Walls (Config Makeathon 2026, live project) */}
+          <motion.div className="pw-card-wrap wide pw-card-wrap-whisper" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
+            <span className="pw-figma-label">Showcase 4: Config Makeathon 2026</span>
+            <span className="pw-frame-handle tl" />
+            <span className="pw-frame-handle tr" />
+            <span className="pw-frame-handle bl" />
+            <span className="pw-frame-handle br" />
+            <span className="pw-frame-handle ml" />
+            <span className="pw-frame-handle mr" />
+            <a
+              href="https://hull-pivot-72843997.figma.site"
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={handleWhisperEnter}
+              onMouseLeave={handleWhisperLeave}
+              className="pw-card wide slate-card"
+              data-cursor="View live project"
+            >
+              <div className="pw-card-left slate-dark">
+                <h3 className="pw-headline">
+                  <span style={{ color: '#FF7262' }}>Whisper Walls</span>: An Anonymous Tech City for Honest Reviews
+                </h3>
+                <p className="pw-card-description">
+                  Tap a building to read what people couldn't say out loud about working or interviewing there. Blow on your screen to clear the noise and hear a whisper.
+                </p>
+                <div className="pw-card-tags">
+                  <span>Figma Make</span><span>Figma Weave</span><span>Supabase</span>
+                </div>
+              </div>
+              <div className="pw-card-right slate-light browser-side">
+                <div className="browser-frame">
+                  <div className="browser-chrome">
+                    <span className="browser-dot red" />
+                    <span className="browser-dot yellow" />
+                    <span className="browser-dot green" />
+                    <div className="browser-url"></div>
+                  </div>
+                  <div className="browser-body whisper-browser-body">
+                    <video
+                      ref={whisperVideoRef}
+                      src="https://res.cloudinary.com/df77bvytq/video/upload/v1781422699/Figma_Makeathon_ms5d9x.mp4"
+                      loop
+                      playsInline
+                      preload="metadata"
+                      poster="/whisper_walls_thumbnail_clean.png"
+                      className="browser-img"
+                    />
                   </div>
                 </div>
               </div>

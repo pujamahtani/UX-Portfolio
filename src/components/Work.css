@@ -176,12 +176,49 @@
   margin-top: 4px;
 }
 
+/* ── Description (Whisper Walls card) ── */
+.pw-card-description {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--muted);
+  margin-top: 18px;
+  max-width: 520px;
+}
+
+/* ── Live CTA (Whisper Walls card) ── */
+.pw-live-cta {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin-top: 24px;
+  padding: 10px 20px;
+  border-radius: 100px;
+  background: #E8A87C;
+  color: #1A2A35;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  box-shadow: 0 2px 0 rgba(26, 42, 53, 0.18);
+}
+.pw-card:hover .pw-live-cta {
+  background: #F0B68C;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 0 rgba(26, 42, 53, 0.22);
+}
+
 /* ── Tags ── */
 .pw-card-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 44px;
+}
+/* Tighten the gap when tags follow a description (Whisper Walls card) */
+.pw-card-description + .pw-card-tags {
+  margin-top: 24px;
 }
 
 .pw-card-tags span {
@@ -267,6 +304,12 @@
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.7);
 }
+
+.pw-card.slate-card .pw-card-left.slate-dark .pw-card-description {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
 
 .pw-card.slate-card .pw-card-left.slate-dark {
   background: #2A2A2A;
@@ -776,7 +819,8 @@
 }
 
 .pw-card:hover .wfo-browser-body .browser-img,
-.pw-card:hover .clinical-browser-body .browser-img {
+.pw-card:hover .clinical-browser-body .browser-img,
+.pw-card:hover .whisper-browser-body .browser-img {
   transform: scale(1.04);
 }
 
@@ -787,6 +831,16 @@
 .clinical-browser-body .browser-img {
   object-fit: contain;
   object-position: top center;
+}
+
+/* Whisper Walls — cinematic cityscape video, fills the frame */
+.whisper-browser-body {
+  background: #1A2A35;
+  position: relative;
+}
+.whisper-browser-body .browser-img {
+  object-fit: cover;
+  object-position: center;
 }
 
 /* ── DCC Card — background + overlay + modal layered inside browser body ── */
