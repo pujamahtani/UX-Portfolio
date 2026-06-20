@@ -189,7 +189,7 @@ const Work = () => {
                   <span style={{ color: '#FF7262' }}>Whisper Walls</span>: An Anonymous Tech City for Honest Reviews
                 </h3>
                 <p className="pw-card-description">
-                  Tap a building to read what people couldn't say out loud about working or interviewing there. Blow on your screen to clear the noise and hear a whisper.
+                  Public reviews rarely tell you what a company is really like to work or interview at. This is where people share the honest truth anonymously, tap a building to listen in.
                 </p>
                 <div className="pw-card-tags">
                   <span>Figma Make</span><span>Figma Weave</span><span>Supabase</span>
