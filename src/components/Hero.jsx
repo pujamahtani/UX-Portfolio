@@ -78,7 +78,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0, rotate: Math.random() * 20 - 10 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            drag dragConstraints={constraintsRef}
+            drag dragMomentum={false} dragConstraints={constraintsRef}
             whileDrag={{ scale: 1.1, zIndex: 20 }}
           >
             1px off, and I'll find it. 🫠
@@ -90,7 +90,7 @@ const Hero = () => {
       <motion.div className="sticky-note note-white" style={{ top: '12%', right: '8%', display: 'flex', alignItems: 'center', gap: '16px', padding: '16px 20px', borderRadius: '16px' }}
         initial={{ opacity: 0, y: 20, rotate: 2 }} animate={{ opacity: 1, y: 0, rotate: 4 }}
         whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, delay: 1 }}
-        drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
+        drag dragMomentum={false} dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
       >
         <div className="music-cover" onClick={handleTogglePlay} style={{ width: '56px', height: '56px', borderRadius: '10px', backgroundImage: `url(${songCover})`, backgroundSize: 'cover', backgroundPosition: 'center', cursor: 'none', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
           {isPlaying ? (
@@ -111,7 +111,7 @@ const Hero = () => {
       <motion.div className="sticky-note note-pink" style={{ bottom: '25%', left: '10%' }}
         initial={{ opacity: 0, y: 20, rotate: 4 }} animate={{ opacity: 1, y: 0, rotate: 2 }}
         whileHover={{ scale: 1.05 }} transition={{ duration: 0.6, delay: 1.2 }}
-        drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
+        drag dragMomentum={false} dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
       >
         📍 Based in United States
       </motion.div>
@@ -119,7 +119,7 @@ const Hero = () => {
       {/* Flip Card Math Fun Fact */}
       <motion.div className="sticky-note flip-card note-lightyellow" style={{ bottom: '20%', right: '10%', padding: 0 }}
         initial={{ opacity: 0, y: 20, rotate: -4 }} animate={{ opacity: 1, y: 0, rotate: -6 }}
-        drag dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
+        drag dragMomentum={false} dragConstraints={constraintsRef} whileDrag={{ scale: 1.1, zIndex: 20 }}
         transition={{ duration: 0.6, delay: 1.4 }}
       >
         <div className="flip-card-inner">

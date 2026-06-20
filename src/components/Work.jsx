@@ -39,7 +39,7 @@ const Work = () => {
   };
 
   return (
-    <section id="works" className="premium-works" style={{ paddingTop: '24px', position: 'relative' }}>
+    <section id="works" className="premium-works" style={{ paddingTop: '48px', position: 'relative' }}>
       <div className="section-inner" style={{ maxWidth: '1140px', margin: '0 auto', position: 'relative' }}>
 
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-10%' }} variants={cardVars}>
@@ -64,7 +64,7 @@ const Work = () => {
 
           {/* Card 1: ClinicalIQ */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 1: Integrated Workflow Engine</span>
+            <span className="pw-figma-label">Showcase 1: AI-Native Product</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
@@ -74,7 +74,7 @@ const Work = () => {
             <a href="/project/clinicaliq" onClick={(e) => handleProjectClick(e, 'clinicaliq')} onMouseEnter={handleClinicalEnter} onMouseLeave={handleClinicalLeave} className="pw-card wide slate-card" data-cursor="View project">
               <div className="pw-card-left slate-dark">
                 <h3 className="pw-headline">
-                  AI Decision Support: Cutting Operational Risk by <span className="handwriting-accent">40%</span>
+                  AI Decision Support: From Alert to Care Plan in Under <span className="handwriting-accent">2 Minutes</span>
                 </h3>
                 <div className="pw-card-tags">
                   <span>Strategy</span><span>Interactive Prototype</span><span>AI Workflow</span>
@@ -98,7 +98,7 @@ const Work = () => {
 
           {/* Card 2: Showcase 2 — Workforce Optimization */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 2: Predictive Workforce Optimization</span>
+            <span className="pw-figma-label">Showcase 2: 0-to-1 Product</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
@@ -132,7 +132,7 @@ const Work = () => {
 
           {/* Card 3: Showcase 3 — Data Control Center */}
           <motion.div className="pw-card-wrap wide" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 3: Data Control Center</span>
+            <span className="pw-figma-label">Showcase 3: Enterprise SaaS</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />
@@ -168,7 +168,7 @@ const Work = () => {
 
           {/* Card 4: Showcase 4 — Whisper Walls (Config Makeathon 2026, live project) */}
           <motion.div className="pw-card-wrap wide pw-card-wrap-whisper" initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} variants={cardVars}>
-            <span className="pw-figma-label">Showcase 4: Config Makeathon 2026</span>
+            <span className="pw-figma-label">Showcase 4: Config Makeathon</span>
             <span className="pw-frame-handle tl" />
             <span className="pw-frame-handle tr" />
             <span className="pw-frame-handle bl" />

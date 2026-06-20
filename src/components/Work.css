@@ -127,7 +127,7 @@
   padding: 40px 44px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   z-index: 2;
 }
 
@@ -214,11 +214,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 44px;
-}
-/* Tighten the gap when tags follow a description (Whisper Walls card) */
-.pw-card-description + .pw-card-tags {
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 0;
 }
 
 .pw-card-tags span {
@@ -298,6 +295,7 @@
 
 .pw-card.slate-card .pw-card-left.slate-dark .pw-headline {
   color: #FFFFFF;
+  margin-top: 19px;
 }
 
 .pw-card.slate-card .pw-card-left.slate-dark .pw-card-tags span {

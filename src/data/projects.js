@@ -16,9 +16,9 @@ export const projectsData = [
   {
     id: 'clinicaliq',
     label: 'Showcase 1',
-    title: 'AI Decision Support: Cutting Operational Risk by 40%',
+    title: 'AI Decision Support: From Alert to Care Plan in Under 2 Minutes',
     accentPhrase: 'AI Decision Support',
-    handwriting: '40%',
+    handwriting: '2 Minutes',
     shortTitle: 'Anemia Management',
     description: 'An in-workflow decision support engine integrated into Epic Hyperspace, built to help care teams prioritize complex, high-risk operational anomalies in real time.',
     color: '#1E6C50',
@@ -73,9 +73,9 @@ export const projectsData = [
         outcome:
           'BloodHealth Copilot embeds an AI decision layer inside Epic, monitoring FHIR data in real time, surfacing the highest-risk patients, and generating evidence-backed care plans in one click.',
         metrics: [
-          { value: '40%', label: '↓ unnecessary transfusions (projected)', tone: 'warm' },
           { value: '<2 min', label: 'alert → care plan', tone: 'teal' },
           { value: 'Real-time', label: 'safety data to improve patient care', tone: 'teal' },
+          { value: '40%', label: '↓ unnecessary transfusions (projected)', tone: 'warm' },
           { value: 'Physician-ready', label: 'outcome reports & trend tracking', tone: 'warm' },
         ],
         flowDiagram: {
@@ -324,7 +324,7 @@ export const projectsData = [
       {
         type: 'role',
         kicker: 'My Role',
-        title: 'Lead Product Designer, building from scratch.',
+        title: 'Solo Product Designer, building from scratch.',
         intro: 'Only designer on a 7-person team. I ran every phase: discovery, workshops, design system, five rounds of testing, and engineering handoff.',
         items: [
           {
@@ -581,8 +581,21 @@ export const projectsData = [
       },
       {
         type: 'overview',
-        kicker: 'Note',
-        content: 'Happy to provide a deeper tour privately and with permission :)',
+        kicker: 'The Problem',
+        question: 'How do customers move their own data in and out without waiting on an internal team?',
+        content: 'Two legacy tools handled imports and exports into the company data warehouse, but both had to be run by the Customer Onboarding team. Every new account stalled in setup before it ever reached value.',
+        outcome: 'One self-serve platform with automatic field mapping and pre-run syntax checks that flag formatting errors before an import runs, plus a live log that captures every run with row-level error detail.',
+        metrics: [
+          { value: '48%', label: '↓ customer activation time', tone: 'warm' },
+          { value: '2x', label: 'faster onboarding', tone: 'teal' },
+          { value: 'Self-serve', label: 'no internal-team dependency', tone: 'teal' },
+          { value: 'Build vs buy', label: 'evaluated Flatfile, built in-house', tone: 'warm' },
+        ],
+      },
+      {
+        type: 'overview',
+        kicker: 'Walkthrough on request',
+        content: 'These screens contain confidential customer data, so I cannot share them publicly. Happy to provide a deeper tour privately and with permission :)',
       },
     ],
   },
