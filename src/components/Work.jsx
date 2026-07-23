@@ -89,7 +89,7 @@ const Work = () => {
                     <div className="browser-url"></div>
                   </div>
                   <div className="browser-body clinical-browser-body">
-                    <video ref={clinicalVideoRef} src="https://res.cloudinary.com/df77bvytq/video/upload/v1779066541/case-study1_vr6lze.mp4" muted loop playsInline preload="metadata" className="browser-img" />
+                    <video ref={clinicalVideoRef} src="/videos/case-study1.mp4" muted loop playsInline preload="metadata" className="browser-img" />
                   </div>
                 </div>
               </div>
@@ -206,7 +206,7 @@ const Work = () => {
                   <div className="browser-body whisper-browser-body">
                     <video
                       ref={whisperVideoRef}
-                      src="https://res.cloudinary.com/df77bvytq/video/upload/v1781422699/Figma_Makeathon_ms5d9x.mp4"
+                      src="/videos/figma_makeathon.mp4"
                       loop
                       playsInline
                       preload="metadata"

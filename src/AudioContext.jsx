@@ -4,7 +4,7 @@ const AudioCtx = createContext(null);
 
 const LOOP_START = 60;
 const LOOP_END   = 180;
-const SRC = 'https://res.cloudinary.com/df77bvytq/video/upload/v1779088141/Hugel_SOLTO_FR_-_Jamaican_Bam_Bam_Extended_Mix__mp3.pm_enky9o.mp3';
+const SRC = '/videos/jamaican_bam_bam.mp3';
 
 export function AudioProvider({ children }) {
   const audioRef = useRef(null);
