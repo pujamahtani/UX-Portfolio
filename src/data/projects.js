@@ -438,9 +438,9 @@ export const projectsData = [
             number: '01',
             title: 'KPI Dashboard',
             tagline: 'Clarity at every level, without losing the depth.',
-            decision: 'Cut 11 KPIs → 7',
+            decision: 'Held the headline at 7 KPIs',
             whyBullets: [
-              'Lab managers needed a 10-second read on staffing health, not an 11-metric audit.',
+              'The customer asked for more metrics up front, but lab managers needed a 10-second read on staffing health.',
               'Stakeholders needed a tool that drove faster decisions and reduced overtime spend.',
               'Designed a three-layer hierarchy: 7 headline KPIs, a color-coded heatmap, trend graphs.',
             ],
