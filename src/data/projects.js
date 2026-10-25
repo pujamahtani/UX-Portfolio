@@ -315,7 +315,7 @@ export const projectsData = [
     heroImage: '/wfo-dashboard.webp',
     tags: ['UX Research', 'Systems Thinking', 'Data Visualization'],
     meta: {
-      timeline: 'Apr 12 – Nov 20, 2024 (MVP Shipped)',
+      timeline: 'Pilot MVP shipped in 3 weeks · V1 released 2 weeks later',
       team: '1 PM · 2 Data Engineers · 3 Engineers · 1 UX Designer',
       methods: 'Stakeholder Interviews · Design Workshops · Personas · Rapid Prototyping · Usability Testing',
       platform: 'Web · Desktop SaaS',
@@ -550,7 +550,7 @@ export const projectsData = [
     tags: ['Self-Serve SaaS', 'Build vs. Buy', 'Stakeholder Research'],
     meta: {
       role: 'Solo Product Designer',
-      timeline: 'Q1 – Q3 2023 (MVP Shipped)',
+      timeline: 'Shipped and expanded across four phases',
       team: '1 PM · 2 Engineers · 2 Service Delivery · 1 Designer',
       methods: 'Stakeholder Interviews · Competitive Analysis · Problem Framing · Rapid Prototyping · Usability Testing',
       platform: 'Web · Desktop SaaS',
