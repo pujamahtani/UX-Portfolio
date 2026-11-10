@@ -19,7 +19,7 @@ const BIO_TABS = {
     paragraphs: [
       {
         intro: 'I bring together design, strategy, and a genuine curiosity for how complex systems work.',
-        rest: " With 4+ years across AI, enterprise, and data-heavy products, I've learned that the best design isn't the prettiest. It's the one that earns trust and actually works for the people depending on it.",
+        rest: " With 5+ years across AI, enterprise, and data-heavy products, I've learned that the best design isn't the prettiest. It's the one that earns trust and actually works for the people depending on it.",
       },
       {
         intro: 'My sweet spot is the messy middle.',
